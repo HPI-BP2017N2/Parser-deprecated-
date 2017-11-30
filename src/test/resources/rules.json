@@ -1,0 +1,24 @@
+{
+	"name": [
+		{
+			"x-path":"[itemprop='name']",
+			"attribute":null
+		},
+		{
+			"x-path":"[property='og:title']",
+			"attribute":"content"
+		}
+
+	],
+	
+	"price": [
+		{
+			"x-path":"[itemprop='price']",
+			"attribute":"content"
+		},
+		{
+			"x-path":"[itemprop='price']",
+			"attribute":null
+		}
+	]
+}
