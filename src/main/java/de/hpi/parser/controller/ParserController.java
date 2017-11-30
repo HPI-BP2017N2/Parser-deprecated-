@@ -1,5 +1,7 @@
 package de.hpi.parser.controller;
 
+import de.hpi.parser.dto.ExtractJsonLdParameter;
+import de.hpi.parser.dto.ExtractJsonLdResponse;
 import de.hpi.parser.dto.ParseWithRuleParameter;
 import de.hpi.parser.dto.ParseWithRuleResponse;
 import de.hpi.parser.service.ParserService;
@@ -28,6 +30,16 @@ public class ParserController {
     public ParseWithRuleResponse parseHtmlWithSpecifiedRule(@RequestBody ParseWithRuleParameter parameter){
         try {
             return new ParseWithRuleResponse(getParserService().parseHtmlWithSepcifiedRule(parameter.getHtml(), parameter.getRuleAsJson()));
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @RequestMapping(value = "/extractJsonLd", method = RequestMethod.POST,  produces = "application/json")
+    public ExtractJsonLdResponse extractJsonLdFromHtml(@RequestBody ExtractJsonLdParameter parameter){
+        try {
+            return new ExtractJsonLdResponse(getParserService().extractJsonLdFromHtml(parameter.getHtml()));
         } catch (IOException e) {
             e.printStackTrace();
             return null;

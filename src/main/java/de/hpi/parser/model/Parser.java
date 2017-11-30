@@ -1,5 +1,7 @@
 package de.hpi.parser.model;
 
+import lombok.AccessLevel;
+import lombok.Getter;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -17,26 +19,40 @@ import java.util.Map;
 
 public class Parser {
 
+    //constants
+    @Getter(AccessLevel.PRIVATE) private static final String JSON_LD_SELECT = "script[type='application/ld+json']";
+
+    //convenience
     public String parseHtmlWithRuleAsJson(String html, String ruleAsJson) throws IOException {
         JsonObject rulesJsonObject = readRulesJson(ruleAsJson);
         Document htmlDocument = Jsoup.parse(html);
         JsonObject dataJsonObject = extractData(rulesJsonObject, htmlDocument);
-        return jsonToString(dataJsonObject);
+        return dataJsonObject.toString();
     }
 
-    private static String jsonToString(JsonObject dataJsonObject) throws IOException {
-        StringWriter stringWriter = new StringWriter();
-        Map<String, Object> properties = new HashMap<>(1);
-        properties.put(JsonGenerator.PRETTY_PRINTING, true);
-        JsonWriterFactory writerFactory = Json.createWriterFactory(properties);
-        JsonWriter writer = writerFactory.createWriter(stringWriter);
-        writer.writeObject(dataJsonObject);
-        writer.close();
-        String jsonString = stringWriter.toString();
-        stringWriter.close();
-        return jsonString;
+    public String extractJsonLdFromHtml(String html){
+        Document htmlDocument = Jsoup.parse(html);
+        List<String> jsonStrings = new LinkedList<>();
+        for (Element element : htmlDocument.select(getJSON_LD_SELECT())) {
+            jsonStrings.add(element.html());
+        }
+
+        JsonObject result = getJsonFromList(jsonStrings);
+        return result.toString();
     }
 
+    private JsonObject getJsonFromList(List<String> jsonStrings) {
+        JsonObjectBuilder objectBuilder = Json.createObjectBuilder();
+        JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
+
+        for (String jsonString : jsonStrings){
+            arrayBuilder.add(jsonString);
+        }
+        objectBuilder.add("jsonLd", arrayBuilder.build());
+        return objectBuilder.build();
+    }
+
+    //actions
     private JsonObject extractData(JsonObject rulesJsonObject, Document htmlDocument) {
         JsonObjectBuilder dataObjectBuilder = Json.createObjectBuilder();
         Rule rule;
@@ -73,15 +89,17 @@ public class Parser {
         }
         return results;
     }
-    private static boolean isAttributeSet(Rule rule){
-        return rule.getAttribute() != null;
-    }
 
     private JsonObject readRulesJson(String ruleAsJson) {
         JsonReader reader = Json.createReader(new StringReader(ruleAsJson));
         JsonObject rule = reader.readObject();
         reader.close();
         return rule;
+    }
+
+    //conditionals
+    private static boolean isAttributeSet(Rule rule){
+        return rule.getAttribute() != null;
     }
 
 }

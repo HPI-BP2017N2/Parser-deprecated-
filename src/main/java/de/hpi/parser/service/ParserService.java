@@ -20,4 +20,8 @@ public class ParserService {
     public String parseHtmlWithSepcifiedRule(String html, String ruleAsJsonString) throws IOException {
        return getParser().parseHtmlWithRuleAsJson(html, ruleAsJsonString);
     }
+
+    public String extractJsonLdFromHtml(String html) throws IOException {
+        return getParser().extractJsonLdFromHtml(html);
+    }
 }

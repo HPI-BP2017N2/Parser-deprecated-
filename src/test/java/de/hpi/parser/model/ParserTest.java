@@ -26,12 +26,20 @@ class ParserTest {
 
     @Test
     void parseHtmlWithRuleAsJson() throws IOException {
-        String html = readFileFromClasspath("htmlTestFile.htm");
-        String rules = readFileFromClasspath("rules.json");
-        String expectedResult = readFileFromClasspath("expectedResult.json");
-
+        String html = readFileFromClasspath("parseWithRuleAsJson/htmlTestFile.htm");
+        String rules = readFileFromClasspath("parseWithRuleAsJson/rules.json");
+        String expectedResult = readFileFromClasspath("parseWithRuleAsJson/expectedResult.json");
 
         String result = ParserTest.getParser().parseHtmlWithRuleAsJson(html, rules);
+        assertTrue(compareJson(expectedResult, result));
+    }
+
+    @Test
+    void extractJsonLdFromHtml() throws IOException {
+        String html = readFileFromClasspath("extractJsonLdFromHtml/htmlTestFile.htm");
+        String expectedResult = readFileFromClasspath("extractJsonLdFromHtml/expectedResult.json");
+
+        String result = ParserTest.getParser().extractJsonLdFromHtml(html);
         assertTrue(compareJson(expectedResult, result));
     }
 
