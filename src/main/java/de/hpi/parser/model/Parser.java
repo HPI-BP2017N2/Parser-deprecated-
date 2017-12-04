@@ -7,15 +7,10 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 import javax.json.*;
-import javax.json.stream.JsonGenerator;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.StringReader;
-import java.io.StringWriter;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 public class Parser {
 
