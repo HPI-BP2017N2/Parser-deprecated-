@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 @RestController
@@ -28,22 +29,13 @@ public class ParserController {
 
     @RequestMapping(value = "/parseWithRule", method = RequestMethod.POST,  produces = "application/json")
     public ParseWithRuleResponse parseHtmlWithSpecifiedRule(@RequestBody ParseWithRuleParameter parameter){
-        try {
-            return new ParseWithRuleResponse(getParserService().parseHtmlWithSepcifiedRule(parameter.getHtml(), parameter.getRuleAsJson()));
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
+        return new ParseWithRuleResponse(getParserService().parseHtmlWithSpecifiedRule(parameter.getHtml(), parameter
+                .getRuleAsJson()));
     }
 
     @RequestMapping(value = "/extractJsonLd", method = RequestMethod.POST,  produces = "application/json")
-    public ExtractJsonLdResponse extractJsonLdFromHtml(@RequestBody ExtractJsonLdParameter parameter){
-        try {
-            return new ExtractJsonLdResponse(getParserService().extractJsonLdFromHtml(parameter.getHtml()));
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
+    public ExtractJsonLdResponse extractJsonLdFromHtml(@RequestBody ExtractJsonLdParameter parameter) throws FileNotFoundException {
+        return new ExtractJsonLdResponse(getParserService().extractJsonLdFromHtml(parameter.getHtml()));
     }
 
 

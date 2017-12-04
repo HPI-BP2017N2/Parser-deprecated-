@@ -1,4 +1,4 @@
-package de.hpi.parser.model;
+package de.hpi.parser.service;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -16,21 +16,22 @@ import java.io.StringReader;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class ParserTest {
-    @Getter(AccessLevel.PRIVATE) @Setter(AccessLevel.PRIVATE) private static Parser parser;
+class ParserServiceTest {
+
+    @Getter(AccessLevel.PRIVATE) @Setter(AccessLevel.PRIVATE) private static ParserService parserService;
 
     @BeforeAll
     static void setUp() {
-        setParser(new Parser());
+        setParserService(new ParserService());
     }
 
     @Test
-    void parseHtmlWithRuleAsJson() throws IOException {
+    void parseHtmlWithSpecifiedRule() throws IOException {
         String html = readFileFromClasspath("parseWithRuleAsJson/htmlTestFile.htm");
         String rules = readFileFromClasspath("parseWithRuleAsJson/rules.json");
         String expectedResult = readFileFromClasspath("parseWithRuleAsJson/expectedResult.json");
 
-        String result = ParserTest.getParser().parseHtmlWithRuleAsJson(html, rules);
+        String result = ParserServiceTest.getParserService().parseHtmlWithSpecifiedRule(html, rules);
         assertTrue(compareJson(expectedResult, result));
     }
 
@@ -39,9 +40,10 @@ class ParserTest {
         String html = readFileFromClasspath("extractJsonLdFromHtml/htmlTestFile.htm");
         String expectedResult = readFileFromClasspath("extractJsonLdFromHtml/expectedResult.json");
 
-        String result = ParserTest.getParser().extractJsonLdFromHtml(html);
+        String result = ParserServiceTest.getParserService().extractJsonLdFromHtml(html);
         assertTrue(compareJson(expectedResult, result));
     }
+
 
     private boolean compareJson(String jsonA, String jsonB){
         JsonObject objectA = readJson(jsonA);
@@ -66,5 +68,4 @@ class ParserTest {
         reader.close();
         return builder.toString();
     }
-
 }

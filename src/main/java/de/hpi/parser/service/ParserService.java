@@ -6,10 +6,14 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
+import java.io.File;
+import java.io.FileNotFoundException;
 
 @Service
 public class ParserService {
+
+    //constants
+    @Getter(AccessLevel.PRIVATE) private static final String RULES_DIR = "rules", JSON_LD_RULE = "jsonLD.json";
 
     @Getter(AccessLevel.PRIVATE) @Setter(AccessLevel.PRIVATE) private Parser parser;
 
@@ -17,11 +21,11 @@ public class ParserService {
         setParser(new Parser());
     }
 
-    public String parseHtmlWithSepcifiedRule(String html, String ruleAsJsonString) throws IOException {
-       return getParser().parseHtmlWithRuleAsJson(html, ruleAsJsonString);
+    public String parseHtmlWithSpecifiedRule(String html, String ruleAsJsonString) {
+        return getParser().parseHtmlWithRuleAsJson(html, ruleAsJsonString);
     }
 
-    public String extractJsonLdFromHtml(String html) throws IOException {
-        return getParser().extractJsonLdFromHtml(html);
+    public String extractJsonLdFromHtml(String html) throws FileNotFoundException {
+        return getParser().parseHtmlWithExistingRule(html, getRULES_DIR() + File.separator + getJSON_LD_RULE());
     }
 }
