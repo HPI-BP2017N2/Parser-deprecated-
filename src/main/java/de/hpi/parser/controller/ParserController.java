@@ -4,6 +4,7 @@ import de.hpi.parser.dto.ExtractJsonLdParameter;
 import de.hpi.parser.dto.ExtractJsonLdResponse;
 import de.hpi.parser.dto.ParseWithRuleParameter;
 import de.hpi.parser.dto.ParseWithRuleResponse;
+import de.hpi.parser.model.data.Offer;
 import de.hpi.parser.model.data.OfferRepository;
 import de.hpi.parser.service.ParserService;
 import lombok.AccessLevel;
@@ -45,9 +46,11 @@ public class ParserController {
         return new ExtractJsonLdResponse(getParserService().extractJsonLdFromHtml(parameter.getHtml()));
     }
 
-    @RequestMapping(value = "/offerCount", method = RequestMethod.POST)
-    public void offerCount() {
-        System.out.println(getRepository().offerCount());
+    @RequestMapping(value = "/test", method = RequestMethod.POST)
+    public void test() {
+        for (Offer offer : getRepository().getFirstOffersOfShop(1362L, 10)){
+            System.out.println(offer.getOfferTitle().get("0"));
+        }
     }
 
 }
