@@ -4,6 +4,7 @@ import de.hpi.parser.dto.ExtractJsonLdParameter;
 import de.hpi.parser.dto.ExtractJsonLdResponse;
 import de.hpi.parser.dto.ParseWithRuleParameter;
 import de.hpi.parser.dto.ParseWithRuleResponse;
+import de.hpi.parser.model.data.OfferRepository;
 import de.hpi.parser.service.ParserService;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -15,10 +16,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 
 @RestController
 public class ParserController {
+
+    @Autowired
+    @Getter(AccessLevel.PRIVATE) private OfferRepository repository;
 
     @Getter(AccessLevel.PRIVATE) @Setter(AccessLevel.PRIVATE) private ParserService parserService;
 
@@ -38,5 +45,9 @@ public class ParserController {
         return new ExtractJsonLdResponse(getParserService().extractJsonLdFromHtml(parameter.getHtml()));
     }
 
+    @RequestMapping(value = "/offerCount", method = RequestMethod.POST)
+    public void offerCount() {
+        System.out.println(getRepository().offerCount());
+    }
 
 }

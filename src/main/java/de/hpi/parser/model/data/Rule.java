@@ -1,4 +1,4 @@
-package de.hpi.parser.model;
+package de.hpi.parser.model.data;
 
 import lombok.AccessLevel;
 import lombok.Getter;

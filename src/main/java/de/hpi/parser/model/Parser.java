@@ -1,5 +1,6 @@
 package de.hpi.parser.model;
 
+import de.hpi.parser.model.data.Rule;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -14,21 +15,21 @@ import java.util.List;
 public class Parser {
 
     //convenience
-    public String parseHtmlWithRuleAsJson(String html, String ruleAsJson) {
+    public static String parseHtmlWithRuleAsJson(String html, String ruleAsJson) {
         return parseHtmlFromRuleJsonObject(html, readRulesJson(ruleAsJson));
     }
 
-    public String parseHtmlWithExistingRule(String html, String ruleFilePath) throws FileNotFoundException {
+    public static String parseHtmlWithExistingRule(String html, String ruleFilePath) throws FileNotFoundException {
         return parseHtmlFromRuleJsonObject(html, readRulesJsonFromFile(ruleFilePath));
     }
 
     //actions
-    private String parseHtmlFromRuleJsonObject(String html, JsonObject rulesJsonObject){
+    private static String parseHtmlFromRuleJsonObject(String html, JsonObject rulesJsonObject){
         Document htmlDocument = Jsoup.parse(html);
         return extractData(rulesJsonObject, htmlDocument).toString();
     }
 
-    private JsonObject extractData(JsonObject rulesJsonObject, Document htmlDocument) {
+    private static JsonObject extractData(JsonObject rulesJsonObject, Document htmlDocument) {
         JsonObjectBuilder dataObjectBuilder = Json.createObjectBuilder();
         for (String key : rulesJsonObject.keySet()){
             JsonObject resultJsonObject = extractData(htmlDocument, rulesJsonObject, key);
@@ -37,7 +38,7 @@ public class Parser {
         return dataObjectBuilder.build();
     }
 
-    private JsonObject extractData(Document htmlDocument, JsonObject rulesJsonObject, String key) {
+    private static JsonObject extractData(Document htmlDocument, JsonObject rulesJsonObject, String key) {
         JsonObjectBuilder resultObjectBuilder = Json.createObjectBuilder();
         List<JsonObject> jsonRules = rulesJsonObject.getJsonArray(key).getValuesAs(JsonObject.class);
         for (int iJsonRule = 0; iJsonRule < jsonRules.size(); iJsonRule++) {
@@ -48,7 +49,7 @@ public class Parser {
         return resultObjectBuilder.build();
     }
 
-    private JsonArray getResultsForRule(Document htmlDocument, Rule rule) {
+    private static JsonArray getResultsForRule(Document htmlDocument, Rule rule) {
         JsonArrayBuilder ruleArrayBuilder = Json.createArrayBuilder();
         List<String> results = getResultForRule(rule, htmlDocument);
         for (String result : results){
@@ -79,15 +80,15 @@ public class Parser {
         return element.html();
     }
 
-    private JsonObject readRulesJsonFromFile(String filePath) throws FileNotFoundException {
+    private static JsonObject readRulesJsonFromFile(String filePath) throws FileNotFoundException {
         return readRulesJson(Json.createReader(new FileInputStream(filePath)));
     }
 
-    private JsonObject readRulesJson(String ruleAsJson) {
+    private static JsonObject readRulesJson(String ruleAsJson) {
         return readRulesJson(Json.createReader(new StringReader(ruleAsJson)));
     }
 
-    private JsonObject readRulesJson(JsonReader reader){
+    private static JsonObject readRulesJson(JsonReader reader){
         JsonObject rule = reader.readObject();
         reader.close();
         return rule;

@@ -10,27 +10,26 @@ import java.util.List;
 public class ShopParser {
 
     //convenience
-    public void parseShop(long shopID){
 
-    }
 
-    public List<String> getXPathsForOfferAttribute(Document html, String offerAttribute){
-        List<String> xpaths = new LinkedList<>();
+    //actions
+    private List<String> getXPathsForOfferAttribute(Document html, String offerAttribute){
+        List<String> xPaths = new LinkedList<>();
         for (Element element : html.select("*:containsOwn(" + offerAttribute + ")")){
-            xpaths.add(getXPathForDomElement(html, element));
+            xPaths.add(getXPathForDomElement(html, element));
         }
-        return xpaths;
+        return xPaths;
     }
 
     private String getXPathForDomElement(Document html, Element element){
-        StringBuilder xpathBuilder = new StringBuilder();
+        StringBuilder xPathBuilder = new StringBuilder();
         while (!isElementIDSet(element)){
             int tagIndex = getTagIndexForChild(element.parent(), element);
-            xpathBuilder.insert(0, " " + element.tagName() + ":eq(" + tagIndex + ")");
+            xPathBuilder.insert(0, " " + element.tagName() + ":eq(" + tagIndex + ")");
             element = element.parent();
         }
-        xpathBuilder.insert(0,"*#" + element.id());
-        return xpathBuilder.toString();
+        xPathBuilder.insert(0,"*#" + element.id());
+        return xPathBuilder.toString();
     }
 
     private int getTagIndexForChild(Element parent, Element child){
@@ -47,4 +46,5 @@ public class ShopParser {
     private boolean isElementIDSet(Element element) {
         return !element.id().isEmpty();
     }
+
 }
