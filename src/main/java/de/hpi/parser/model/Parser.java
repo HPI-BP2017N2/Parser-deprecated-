@@ -19,10 +19,6 @@ public class Parser {
         return parseHtmlFromRuleJsonObject(html, readRulesJson(ruleAsJson));
     }
 
-    public static String parseHtmlWithExistingRule(String html, String ruleFilePath) throws FileNotFoundException {
-        return parseHtmlFromRuleJsonObject(html, readRulesJsonFromFile(ruleFilePath));
-    }
-
     //actions
     private static String parseHtmlFromRuleJsonObject(String html, JsonObject rulesJsonObject){
         Document htmlDocument = Jsoup.parse(html);

@@ -35,16 +35,6 @@ class ParserServiceTest {
         assertTrue(compareJson(expectedResult, result));
     }
 
-    @Test
-    void extractJsonLdFromHtml() throws IOException {
-        String html = readFileFromClasspath("extractJsonLdFromHtml/htmlTestFile.htm");
-        String expectedResult = readFileFromClasspath("extractJsonLdFromHtml/expectedResult.json");
-
-        String result = ParserServiceTest.getParserService().extractJsonLdFromHtml(html);
-        assertTrue(compareJson(expectedResult, result));
-    }
-
-
     private boolean compareJson(String jsonA, String jsonB){
         JsonObject objectA = readJson(jsonA);
         JsonObject objectB = readJson(jsonB);

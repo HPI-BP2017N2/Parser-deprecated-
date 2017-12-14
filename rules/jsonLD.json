@@ -1,9 +1,0 @@
-{
-  "jsonLD": [
-    {
-      "x-path": "script[type='application/ld+json']",
-      "attribute": null,
-      "result-as-plain-text": false
-    }
-  ]
-}
