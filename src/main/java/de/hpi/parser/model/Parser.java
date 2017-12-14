@@ -6,59 +6,52 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 import javax.json.*;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.StringReader;
 import java.util.LinkedList;
 import java.util.List;
 
 public class Parser {
 
     //convenience
-    public static String parseHtmlWithRuleAsJson(String html, String ruleAsJson) {
-        return parseHtmlFromRuleJsonObject(html, readRulesJson(ruleAsJson));
-    }
-
-    //actions
-    private static String parseHtmlFromRuleJsonObject(String html, JsonObject rulesJsonObject){
+    public static String parse(String html, JsonObject rulesJsonObject){
         Document htmlDocument = Jsoup.parse(html);
         return extractData(rulesJsonObject, htmlDocument).toString();
     }
 
+    //actions
     private static JsonObject extractData(JsonObject rulesJsonObject, Document htmlDocument) {
         JsonObjectBuilder dataObjectBuilder = Json.createObjectBuilder();
         for (String key : rulesJsonObject.keySet()){
-            JsonObject resultJsonObject = extractData(htmlDocument, rulesJsonObject, key);
+            JsonObject resultJsonObject = extractProductAttribute(htmlDocument, rulesJsonObject, key);
             dataObjectBuilder.add(key, resultJsonObject);
         }
         return dataObjectBuilder.build();
     }
 
-    private static JsonObject extractData(Document htmlDocument, JsonObject rulesJsonObject, String key) {
+    private static JsonObject extractProductAttribute(Document htmlDocument, JsonObject rulesJsonObject, String key) {
         JsonObjectBuilder resultObjectBuilder = Json.createObjectBuilder();
         List<JsonObject> jsonRules = rulesJsonObject.getJsonArray(key).getValuesAs(JsonObject.class);
         for (int iJsonRule = 0; iJsonRule < jsonRules.size(); iJsonRule++) {
             Rule rule = Rule.parseRule(jsonRules.get(iJsonRule));
-            JsonArray resultJsonArray = getResultsForRule(htmlDocument, rule);
+            JsonArray resultJsonArray = extractMatches(htmlDocument, rule);
             resultObjectBuilder.add(Integer.toString(iJsonRule), resultJsonArray);
         }
         return resultObjectBuilder.build();
     }
 
-    private static JsonArray getResultsForRule(Document htmlDocument, Rule rule) {
+    private static JsonArray extractMatches(Document htmlDocument, Rule rule) {
         JsonArrayBuilder ruleArrayBuilder = Json.createArrayBuilder();
-        List<String> results = getResultForRule(rule, htmlDocument);
+        List<String> results = extractMatchesAsList(htmlDocument, rule);
         for (String result : results){
             ruleArrayBuilder.add(result);
         }
         return ruleArrayBuilder.build();
     }
 
-    private static List<String> getResultForRule(Rule rule, Document htmlDocument) {
+    private static List<String> extractMatchesAsList(Document htmlDocument, Rule rule) {
         List<String> results = new LinkedList<>();
         String result;
         for (Element element : htmlDocument.select(rule.getXPath())){
-            result = getResultFromElement(rule, element);
+            result = extract(rule, element);
             if (isResultValid(result)){
                 results.add(result);
             }
@@ -66,7 +59,7 @@ public class Parser {
         return results;
     }
 
-    private static String getResultFromElement(Rule rule, Element element) {
+    private static String extract(Rule rule, Element element) {
         if (isAttributeSet(rule)){
             return element.attr(rule.getAttribute());
         }
@@ -74,20 +67,6 @@ public class Parser {
             return element.text();
         }
         return element.html();
-    }
-
-    private static JsonObject readRulesJsonFromFile(String filePath) throws FileNotFoundException {
-        return readRulesJson(Json.createReader(new FileInputStream(filePath)));
-    }
-
-    private static JsonObject readRulesJson(String ruleAsJson) {
-        return readRulesJson(Json.createReader(new StringReader(ruleAsJson)));
-    }
-
-    private static JsonObject readRulesJson(JsonReader reader){
-        JsonObject rule = reader.readObject();
-        reader.close();
-        return rule;
     }
 
     //conditionals

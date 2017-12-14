@@ -1,7 +1,7 @@
 package de.hpi.parser.controller;
 
-import de.hpi.parser.dto.ParseWithRuleParameter;
-import de.hpi.parser.dto.ParseWithRuleResponse;
+import de.hpi.parser.dto.ParseParameter;
+import de.hpi.parser.respository.OfferJsonRepository;
 import de.hpi.parser.service.ParserService;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -15,18 +15,21 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ParserController {
 
-    @Getter(AccessLevel.PRIVATE) @Setter(AccessLevel.PRIVATE) private ParserService parserService;
+    @Getter(AccessLevel.PRIVATE) @Setter(AccessLevel.PRIVATE) private OfferJsonRepository repository;
+    @Getter(AccessLevel.PRIVATE) @Setter(AccessLevel.PRIVATE) private ParserService service;
 
     @Autowired
-    public ParserController(ParserService parserService){
-        setParserService(parserService);
+    public ParserController(ParserService service, OfferJsonRepository repository){
+        setService(service);
+        setRepository(repository);
     }
 
-    @RequestMapping(value = "/parse", method = RequestMethod.POST,  produces = "application/json")
-    public ParseWithRuleResponse parseHtmlWithSpecifiedRule(@RequestBody ParseWithRuleParameter parameter){
-        String extractedData = getParserService().parseHtmlWithSpecifiedRule(parameter.getHtml(), parameter
-                .getRuleAsJson());
-        return new ParseWithRuleResponse(extractedData);
+    @RequestMapping(value = "/parse", method = RequestMethod.POST)
+    public void parse(@RequestBody ParseParameter parameter){
+        String schemaData = getService().parseHtmlWithSchemaOrg(parameter.getHtml());
+        String jsonLDData = getService().parseHtmlWithJsonLD(parameter.getHtml());
+
+        getRepository().save(schemaData + System.lineSeparator() + jsonLDData);
     }
 
 }

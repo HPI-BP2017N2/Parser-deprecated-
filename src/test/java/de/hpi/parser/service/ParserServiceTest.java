@@ -1,9 +1,6 @@
 package de.hpi.parser.service;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.Setter;
-import org.junit.jupiter.api.BeforeAll;
+import de.hpi.parser.model.Parser;
 import org.junit.jupiter.api.Test;
 
 import javax.json.Json;
@@ -18,20 +15,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ParserServiceTest {
 
-    @Getter(AccessLevel.PRIVATE) @Setter(AccessLevel.PRIVATE) private static ParserService parserService;
-
-    @BeforeAll
-    static void setUp() {
-        setParserService(new ParserService());
-    }
-
     @Test
     void parseHtmlWithSpecifiedRule() throws IOException {
         String html = readFileFromClasspath("parseWithRuleAsJson/htmlTestFile.htm");
         String rules = readFileFromClasspath("parseWithRuleAsJson/rules.json");
         String expectedResult = readFileFromClasspath("parseWithRuleAsJson/expectedResult.json");
 
-        String result = ParserServiceTest.getParserService().parseHtmlWithSpecifiedRule(html, rules);
+        String result = Parser.parse(html, de.hpi.parser.model.JsonReader.readJsonObject(rules));
         assertTrue(compareJson(expectedResult, result));
     }
 

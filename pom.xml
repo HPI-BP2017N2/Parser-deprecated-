@@ -56,7 +56,6 @@
         <start-class>de.hpi.</start-class>
     </properties>
 
-
     <build>
         <plugins>
             <plugin>
@@ -92,6 +91,11 @@
                 </executions>
             </plugin>
         </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
     </build>
 
     <repositories>
