@@ -6,57 +6,53 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 import javax.json.*;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 public class Parser {
 
     //convenience
-    public static String parse(String html, JsonObject rulesJsonObject){
+    public static HashMap<String, HashMap<Integer, List<String>>> parse(String html, HashMap<String, List<Rule>>
+            rules){
         Document htmlDocument = Jsoup.parse(html);
-        return extractData(rulesJsonObject, htmlDocument).toString();
+        return extractData(rules, htmlDocument);
     }
 
     //actions
-    private static JsonObject extractData(JsonObject rulesJsonObject, Document htmlDocument) {
-        JsonObjectBuilder dataObjectBuilder = Json.createObjectBuilder();
-        for (String key : rulesJsonObject.keySet()){
-            JsonObject resultJsonObject = extractProductAttribute(htmlDocument, rulesJsonObject, key);
-            dataObjectBuilder.add(key, resultJsonObject);
+    private static HashMap<String, HashMap<Integer, List<String>>> extractData(HashMap<String, List<Rule>> rules,
+                                                                          Document htmlDocument) {
+        HashMap<String, HashMap<Integer, List<String>>> extractedData = new HashMap<>();
+        for (String attribute : rules.keySet()){
+            HashMap<Integer, List<String>> result = extractProductAttribute(htmlDocument, rules.get(attribute));
+            extractedData.put(attribute, result);
         }
-        return dataObjectBuilder.build();
+        return extractedData;
     }
 
-    private static JsonObject extractProductAttribute(Document htmlDocument, JsonObject rulesJsonObject, String key) {
-        JsonObjectBuilder resultObjectBuilder = Json.createObjectBuilder();
-        List<JsonObject> jsonRules = rulesJsonObject.getJsonArray(key).getValuesAs(JsonObject.class);
-        for (int iJsonRule = 0; iJsonRule < jsonRules.size(); iJsonRule++) {
-            Rule rule = Rule.parseRule(jsonRules.get(iJsonRule));
-            JsonArray resultJsonArray = extractMatches(htmlDocument, rule);
-            resultObjectBuilder.add(Integer.toString(iJsonRule), resultJsonArray);
-        }
-        return resultObjectBuilder.build();
-    }
-
-    private static JsonArray extractMatches(Document htmlDocument, Rule rule) {
-        JsonArrayBuilder ruleArrayBuilder = Json.createArrayBuilder();
-        List<String> results = extractMatchesAsList(htmlDocument, rule);
-        for (String result : results){
-            ruleArrayBuilder.add(result);
-        }
-        return ruleArrayBuilder.build();
-    }
-
-    private static List<String> extractMatchesAsList(Document htmlDocument, Rule rule) {
-        List<String> results = new LinkedList<>();
-        String result;
-        for (Element element : htmlDocument.select(rule.getXPath())){
-            result = extract(rule, element);
-            if (isResultValid(result)){
-                results.add(result);
+    private static HashMap<Integer, List<String>> extractProductAttribute(Document htmlDocument, List<Rule>
+            rule) {
+        HashMap<Integer, List<String>> extractedProductAttribute = new HashMap<>();
+        for (int iSelector = 0; iSelector < rule.size(); iSelector++) {
+            List<String> matches = extractMatches(htmlDocument, rule.get(iSelector));
+            if (!matches.isEmpty()) {
+                extractedProductAttribute.put(iSelector, matches);
             }
         }
-        return results;
+        return extractedProductAttribute;
+    }
+
+    private static List<String> extractMatches(Document htmlDocument, Rule rule) {
+        List<String> matches = new LinkedList<>();
+        String match;
+        for (Element element : htmlDocument.select(rule.getXPath())){
+            match = extract(rule, element);
+            if (isResultValid(match)){
+                matches.add(match);
+            }
+        }
+        return matches;
     }
 
     private static String extract(Rule rule, Element element) {
