@@ -6,6 +6,6 @@ import lombok.Setter;
 @Getter @Setter
 public class ParseParameter {
 
-    private String html, shopRootUrl;
+    private String html;
 
 }

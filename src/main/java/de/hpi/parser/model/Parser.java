@@ -31,11 +31,10 @@ public class Parser {
         return extractedData;
     }
 
-    private static HashMap<Integer, List<String>> extractProductAttribute(Document htmlDocument, List<Rule>
-            rule) {
+    private static HashMap<Integer, List<String>> extractProductAttribute(Document htmlDocument, List<Rule> rules) {
         HashMap<Integer, List<String>> extractedProductAttribute = new HashMap<>();
-        for (int iSelector = 0; iSelector < rule.size(); iSelector++) {
-            List<String> matches = extractMatches(htmlDocument, rule.get(iSelector));
+        for (int iSelector = 0; iSelector < rules.size(); iSelector++) {
+            List<String> matches = extractMatches(htmlDocument, rules.get(iSelector));
             if (!matches.isEmpty()) {
                 extractedProductAttribute.put(iSelector, matches);
             }

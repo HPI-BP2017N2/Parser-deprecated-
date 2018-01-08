@@ -1,6 +1,9 @@
 package de.hpi.parser.service;
 
+import de.hpi.parser.model.JsonConverter;
 import de.hpi.parser.model.Parser;
+import de.hpi.parser.model.data.Rule;
+import de.hpi.parser.model.data.TmpRules;
 import org.junit.jupiter.api.Test;
 
 import javax.json.Json;
@@ -10,6 +13,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.StringReader;
+import java.util.HashMap;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -18,10 +23,11 @@ class ParserServiceTest {
     @Test
     void parseHtmlWithSpecifiedRule() throws IOException {
         String html = readFileFromClasspath("parseWithRuleAsJson/htmlTestFile.htm");
-        String rules = readFileFromClasspath("parseWithRuleAsJson/rules.json");
+        HashMap<String, List<Rule>> rules = JsonConverter.readJavaObjectFromInputStream(getClass().getClassLoader()
+                .getResourceAsStream("parseWithRuleAsJson/rules.json"), TmpRules.class).getRules();
         String expectedResult = readFileFromClasspath("parseWithRuleAsJson/expectedResult.json");
 
-        String result = Parser.parse(html, de.hpi.parser.model.JsonReader.readJsonObject(rules));
+        String result = JsonConverter.getJsonStringForJavaObject(Parser.parse(html, rules));
         assertTrue(compareJson(expectedResult, result));
     }
 
