@@ -3,3 +3,6 @@ server:
 shoprulesgenerator:
   root: ${SHOPRULESGENERATOR_IP}
   getRulesRoute: '/getRules'
+parser:
+  root: ${PARSER_IP}
+  rulesCallbackRoute: '/rulesCallback'
