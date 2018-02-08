@@ -1,0 +1,5 @@
+server:
+  port: ${PARSER_PORT}
+shoprulesgenerator:
+  root: ${SHOPRULESGENERATOR_IP}
+  getRulesRoute: '/getRules'
