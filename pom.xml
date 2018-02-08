@@ -49,6 +49,13 @@
             <artifactId>junit-jupiter-api</artifactId>
             <version>RELEASE</version>
         </dependency>
+
+        <!-- RESTClient -->
+        <dependency>
+            <groupId>de.hpi</groupId>
+            <artifactId>RESTClient</artifactId>
+            <version>1.1</version>
+        </dependency>
     </dependencies>
 
     <properties>
