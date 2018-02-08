@@ -1,0 +1,2054 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://opengraphprotocol.org/schema/">
+<head>
+    <!-- fweb2 -->
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"VQQHU19aCBABVVhWAwgGVA=="};window.NREUM||(NREUM={}),__nr_require=function(t,n,e){function r(e){if(!n[e]){var o=n[e]={exports:{}};t[e][0].call(o.exports,function(n){var o=t[e][1][n];return r(o||n)},o,o.exports)}return n[e].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<e.length;o++)r(e[o]);return r}({1:[function(t,n,e){function r(t){try{s.console&&console.log(t)}catch(n){}}var o,i=t("ee"),a=t(15),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,n,e){r(e.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,n){return t}).join(", ")))},{}],2:[function(t,n,e){function r(t,n,e,r,s){try{p?p-=1:o(s||new UncaughtException(t,n,e),!0)}catch(f){try{i("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,n,e){this.message=t||"Uncaught error with no additional information",this.sourceURL=n,this.line=e}function o(t,n){var e=n?null:c.now();i("err",[t,e])}var i=t("handle"),a=t(16),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,l="nr@seenError",p=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(8),t(7),"addEventListener"in window&&t(5),c.xhrWrappable&&t(9),d=!0)}s.on("fn-start",function(t,n,e){d&&(p+=1)}),s.on("fn-err",function(t,n,e){d&&!e[l]&&(f(e,l,function(){return!0}),this.thrown=!0,o(e))}),s.on("fn-end",function(){d&&!this.thrown&&p>0&&(p-=1)}),s.on("internal-error",function(t){i("ierr",[t,c.now(),!0])})},{}],3:[function(t,n,e){t("loader").features.ins=!0},{}],4:[function(t,n,e){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(8),s=t(7),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",l="resource",p="-start",h="-end",m="fn"+p,w="fn"+h,v="bstTimer",y="pushState",g=t("loader");g.features.stn=!0,t(6);var b=NREUM.o.EV;o.on(m,function(t,n){var e=t[0];e instanceof b&&(this.bstStart=g.now())}),o.on(w,function(t,n){var e=t[0];e instanceof b&&i("bst",[e,n,this.bstStart,g.now()])}),a.on(m,function(t,n,e){this.bstStart=g.now(),this.bstType=e}),a.on(w,function(t,n){i(v,[n,this.bstStart,g.now(),this.bstType])}),s.on(m,function(){this.bstStart=g.now()}),s.on(w,function(t,n){i(v,[n,this.bstStart,g.now(),"requestAnimationFrame"])}),o.on(y+p,function(t){this.time=g.now(),this.startPath=location.pathname+location.hash}),o.on(y+h,function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,{passive:!0}),document[f]("keypress",r,!1),document[f]("click",r,!1)}},{}],5:[function(t,n,e){function r(t){for(var n=t;n&&!n.hasOwnProperty(u);)n=Object.getPrototypeOf(n);n&&o(n)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,n){return t[1]}var a=t("ee").get("events"),s=t(18)(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";n.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,n){var e=t[1],r=c(e,"nr@wrapped",function(){function t(){if("function"==typeof e.handleEvent)return e.handleEvent.apply(e,arguments)}var n={object:t,"function":e}[typeof e];return n?s(n,"fn-",null,n.name||"anonymous"):e});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],6:[function(t,n,e){var r=t("ee").get("history"),o=t(18)(r);n.exports=r,o.inPlace(window.history,["pushState","replaceState"],"-")},{}],7:[function(t,n,e){var r=t("ee").get("raf"),o=t(18)(r),i="equestAnimationFrame";n.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],8:[function(t,n,e){function r(t,n,e){t[0]=a(t[0],"fn-",null,e)}function o(t,n,e){this.method=e,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,e)}var i=t("ee").get("timer"),a=t(18)(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";n.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],9:[function(t,n,e){function r(t,n){d.inPlace(n,["onreadystatechange"],"fn-",s)}function o(){var t=this,n=u.context(t);t.readyState>3&&!n.resolved&&(n.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,y,"fn-",s)}function i(t){g.push(t),h&&(x?x.then(a):w?w(a):(E=-E,O.data=E))}function a(){for(var t=0;t<g.length;t++)r([],g[t]);g.length&&(g=[])}function s(t,n){return n}function c(t,n){for(var e in t)n[e]=t[e];return n}t(5);var f=t("ee"),u=f.get("xhr"),d=t(18)(u),l=NREUM.o,p=l.XHR,h=l.MO,m=l.PR,w=l.SI,v="readystatechange",y=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],g=[];n.exports=u;var b=window.XMLHttpRequest=function(t){var n=new p(t);try{u.emit("new-xhr",[n],n),n.addEventListener(v,o,!1)}catch(e){try{u.emit("internal-error",[e])}catch(r){}}return n};if(c(p,b),b.prototype=p.prototype,d.inPlace(b.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,n){r(t,n),i(n)}),u.on("open-xhr-start",r),h){var x=m&&m.resolve();if(!w&&!m){var E=1,O=document.createTextNode(E);new h(a).observe(O,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===v||a()})},{}],10:[function(t,n,e){function r(t){var n=this.params,e=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<d;r++)t.removeEventListener(u[r],this.listener,!1);if(!n.aborted){if(e.duration=a.now()-this.startTime,4===t.readyState){n.status=t.status;var i=o(t,this.lastSize);if(i&&(e.rxSize=i),this.sameOrigin){var c=t.getResponseHeader("X-NewRelic-App-Data");c&&(n.cat=c.split(", ").pop())}}else n.status=0;e.cbTime=this.cbTime,f.emit("xhr-done",[t],t),s("xhr",[n,e,this.startTime])}}}function o(t,n){var e=t.responseType;if("json"===e&&null!==n)return n;var r="arraybuffer"===e||"blob"===e||"json"===e?t.response:t.responseText;return h(r)}function i(t,n){var e=c(n),r=t.params;r.host=e.hostname+":"+e.port,r.pathname=e.pathname,t.sameOrigin=e.sameOrigin}var a=t("loader");if(a.xhrWrappable){var s=t("handle"),c=t(11),f=t("ee"),u=["load","error","abort","timeout"],d=u.length,l=t("id"),p=t(14),h=t(13),m=window.XMLHttpRequest;a.features.xhr=!0,t(9),f.on("new-xhr",function(t){var n=this;n.totalCbs=0,n.called=0,n.cbTime=0,n.end=r,n.ended=!1,n.xhrGuids={},n.lastSize=null,p&&(p>34||p<10)||window.opera||t.addEventListener("progress",function(t){n.lastSize=t.loaded},!1)}),f.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),f.on("open-xhr-end",function(t,n){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&n.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),f.on("send-xhr-start",function(t,n){var e=this.metrics,r=t[0],o=this;if(e&&r){var i=h(r);i&&(e.txSize=i)}this.startTime=a.now(),this.listener=function(t){try{"abort"===t.type&&(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof n.onload))&&o.end(n)}catch(e){try{f.emit("internal-error",[e])}catch(r){}}};for(var s=0;s<d;s++)n.addEventListener(u[s],this.listener,!1)}),f.on("xhr-cb-time",function(t,n,e){this.cbTime+=t,n?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof e.onload||this.end(e)}),f.on("xhr-load-added",function(t,n){var e=""+l(t)+!!n;this.xhrGuids&&!this.xhrGuids[e]&&(this.xhrGuids[e]=!0,this.totalCbs+=1)}),f.on("xhr-load-removed",function(t,n){var e=""+l(t)+!!n;this.xhrGuids&&this.xhrGuids[e]&&(delete this.xhrGuids[e],this.totalCbs-=1)}),f.on("addEventListener-end",function(t,n){n instanceof m&&"load"===t[0]&&f.emit("xhr-load-added",[t[1],t[2]],n)}),f.on("removeEventListener-end",function(t,n){n instanceof m&&"load"===t[0]&&f.emit("xhr-load-removed",[t[1],t[2]],n)}),f.on("fn-start",function(t,n,e){n instanceof m&&("onload"===e&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=a.now()))}),f.on("fn-end",function(t,n){this.xhrCbStart&&f.emit("xhr-cb-time",[a.now()-this.xhrCbStart,this.onload,n],n)})}},{}],11:[function(t,n,e){n.exports=function(t){var n=document.createElement("a"),e=window.location,r={};n.href=t,r.port=n.port;var o=n.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=n.hostname||e.hostname,r.pathname=n.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!n.protocol||":"===n.protocol||n.protocol===e.protocol,a=n.hostname===document.domain&&n.port===e.port;return r.sameOrigin=i&&(!n.hostname||a),r}},{}],12:[function(t,n,e){function r(){}function o(t,n,e){return function(){return i(t,[f.now()].concat(s(arguments)),n?null:this,e),n?void 0:this}}var i=t("handle"),a=t(15),s=t(16),c=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",p=l+"ixn-";a(d,function(t,n){u[n]=o(l+n,!0,"api")}),u.addPageAction=o(l+"addPageAction",!0),u.setCurrentRouteName=o(l+"routeName",!0),n.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,n){var e={},r=this,o="function"==typeof n;return i(p+"tracer",[f.now(),t,e],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],e),o)try{return n.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],e),t}finally{c.emit("fn-end",[f.now()],e)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,n){h[n]=o(p+n)}),newrelic.noticeError=function(t){"string"==typeof t&&(t=new Error(t)),i("err",[t,f.now()])}},{}],13:[function(t,n,e){n.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(n){return}}}},{}],14:[function(t,n,e){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),n.exports=r},{}],15:[function(t,n,e){function r(t,n){var e=[],r="",i=0;for(r in t)o.call(t,r)&&(e[i]=n(r,t[r]),i+=1);return e}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],16:[function(t,n,e){function r(t,n,e){n||(n=0),"undefined"==typeof e&&(e=t?t.length:0);for(var r=-1,o=e-n||0,i=Array(o<0?0:o);++r<o;)i[r]=t[n+r];return i}n.exports=r},{}],17:[function(t,n,e){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],18:[function(t,n,e){function r(t){return!(t&&t instanceof Function&&t.apply&&!t[a])}var o=t("ee"),i=t(16),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;n.exports=function(t,n){function e(t,n,e,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof e?e(r,a):e||{}}catch(f){l([f,"",[r,a,o],s])}u(n+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(d){throw u(n+"err",[r,a,d],s),d}finally{u(n+"end",[r,a,c],s)}}return r(t)?t:(n||(n=""),nrWrapper[a]=t,d(t,nrWrapper),nrWrapper)}function f(t,n,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<n.length;c++)s=n[c],a=t[s],r(a)||(t[s]=e(a,f?s+o:o,i,s))}function u(e,r,o){if(!c||n){var i=c;c=!0;try{t.emit(e,r,o,n)}catch(a){l([a,e,r,o])}c=i}}function d(t,n){if(Object.defineProperty&&Object.keys)try{var e=Object.keys(t);return e.forEach(function(e){Object.defineProperty(n,e,{get:function(){return t[e]},set:function(n){return t[e]=n,n}})}),n}catch(r){l([r])}for(var o in t)s.call(t,o)&&(n[o]=t[o]);return n}function l(n){try{t.emit("internal-error",n)}catch(e){}}return t||(t=o),e.inPlace=f,e.flag=a,e}},{}],ee:[function(t,n,e){function r(){}function o(t){function n(t){return t&&t instanceof r?t:t?c(t,s,i):i()}function e(e,r,o,i){if(!l.aborted||i){t&&t(e,r,o);for(var a=n(o),s=h(e),c=s.length,f=0;f<c;f++)s[f].apply(a,r);var d=u[y[e]];return d&&d.push([g,e,r,a]),a}}function p(t,n){v[t]=h(t).concat(n)}function h(t){return v[t]||[]}function m(t){return d[t]=d[t]||o(e)}function w(t,n){f(t,function(t,e){n=n||"feature",y[e]=n,n in u||(u[n]=[])})}var v={},y={},g={on:p,emit:e,get:m,listeners:h,context:n,buffer:w,abort:a,aborted:!1};return g}function i(){return new r}function a(){(u.api||u.feature)&&(l.aborted=!0,u=l.backlog={})}var s="nr@context",c=t("gos"),f=t(15),u={},d={},l=n.exports=o();l.backlog=u},{}],gos:[function(t,n,e){function r(t,n,e){if(o.call(t,n))return t[n];var r=e();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(t,n,e){function r(t,n,e,r){o.buffer([t],r),o.emit(t,n,e)}var o=t("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(t,n,e){function r(t){var n=typeof t;return!t||"object"!==n&&"function"!==n?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");n.exports=r},{}],loader:[function(t,n,e){function r(){if(!x++){var t=b.info=NREUM.info,n=l.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&n))return u.abort();f(y,function(n,e){t[n]||(t[n]=e)}),c("mark",["onload",a()+b.offset],null,"api");var e=l.createElement("script");e.src="https://"+t.agent,n.parentNode.insertBefore(e,n)}}function o(){"complete"===l.readyState&&i()}function i(){c("mark",["domContent",a()+b.offset],null,"api")}function a(){return E.exists&&performance.now?Math.round(performance.now()):(s=Math.max((new Date).getTime(),s))-b.offset}var s=(new Date).getTime(),c=t("handle"),f=t(15),u=t("ee"),d=window,l=d.document,p="addEventListener",h="attachEvent",m=d.XMLHttpRequest,w=m&&m.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:m,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var v=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1071.min.js"},g=m&&w&&w[p]&&!/CriOS/.test(navigator.userAgent),b=n.exports={offset:s,now:a,origin:v,features:{},xhrWrappable:g};t(12),l[p]?(l[p]("DOMContentLoaded",i,!1),d[p]("load",r,!1)):(l[h]("onreadystatechange",o),d[h]("onload",r)),c("mark",["firstbyte",s],null,"api");var x=0,E=t(17)},{}]},{},["loader",2,10,4,3]);</script>
+
+    <title>Microsoft Surface Dock bei notebooksbilliger.de </title>
+    <base href="https://www.notebooksbilliger.de/" />
+    <meta name="title" content="Microsoft Surface Dock bei notebooksbilliger.de "/>
+    <meta name="description" content="Microsoft Surface Dock - f&uuml;r Surface Pro 4, Surface Book und Surface Pro 3, 
+Jede Menge Leistung f&uuml;r Surface und Zubeh&ouml;r
+Surface Connect-Kabel mit "/>
+    <meta name="keywords" content=""/>
+    <meta name="robots" content="index, follow, noodp"/>
+    <meta name="language" content="deutsch"/>
+    <meta name="author" content="notebooksbilliger.de AG"/>
+    <link rel="author" href="https://plus.google.com/107076845224716861737/"/>
+    <meta property="og:title" content="Microsoft Surface Dock - f&uuml;r Surface Pro 4, Surface Book und Surface Pro 3"/>
+    <meta property="og:url" content="https://www.notebooksbilliger.de/products_id/238802/nbb/8025a0" />
+    <meta property="og:description" content="Microsoft Surface Dock - f&uuml;r Surface Pro 4, Surface Book und Surface Pro 3, 
+Jede Menge Leistung f&uuml;r Surface und Zubeh&ouml;r
+Surface Connect-Kabel mit " />
+    <meta property="og:type" content="article"/>
+    <meta property="og:site_name" content="notebooksbilliger.de" />
+
+        <meta property="fb:admins" content="1314522503,100000878132536,685225830"/>
+    <meta property="fb:page_id" content="96029103777"/>
+    <meta property="fb:app_id" content="456025054598001"/>
+        <meta name="age-de-meta-label" content="age= info=www.notebooksbilliger.de/age-de.xml v=1.0 kind=sl area=*.notebooksbilliger.de/* protocol=all age-issuer=www.notebooksbilliger.de" />
+    <link rel="stylesheet" type="text/css" href="https://www.notebooksbilliger.de/includes/css/dist/base_749715415123992968.css"/>
+        <!--[if gte IE 10]><!-->
+    <link rel="stylesheet" type="text/css" href="https://www.notebooksbilliger.de/includes/css/dist/main_2220985824204160965.css"/>
+    <!--<![endif]-->
+    <!--[if lt IE 10]>
+    <link rel="stylesheet" href="https://www.notebooksbilliger.de/includes/css/dist/splitCSS/main_3225729751170028657.css">
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="https://www.notebooksbilliger.de/includes/css/dist/epoq_279629630261063357.css"/>
+        <!--[if gt IE 7]>
+    <link rel="stylesheet" type="text/css" href="https://www.notebooksbilliger.de/includes/css/dist/ie_3333674855148447631.css" />
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" media="only screenstop and (device-width: 768px)" href="https://www.notebooksbilliger.de/includes/css/dist/ipad_2887583381225700890.css" />
+    <script type="text/javascript" language="javascript" src="https://www.notebooksbilliger.de/includes/javascript/dist/modernizr_177184921257639555.js"></script>
+    <script type="text/javascript" language="javascript">
+
+                var epoq_displayDocsInSuggest = true;
+    </script>
+    <script type="text/javascript" charset="utf-8" language="javascript" src="https://www.notebooksbilliger.de/includes/javascript/dist/jquery-1.8.2.min_4232631119186464549.js"></script>
+        <script type="text/javascript" language="javascript" async src="//rs.epoq.de/web-api/epoq.js"></script>
+    <script type="text/javascript" charset="utf-8" language="javascript" defer src="https://www.notebooksbilliger.de/includes/javascript/dist/epoq.min_3546565185195640082.js"></script>
+
+    
+    <script type="application/json" id="nbbURL">
+        {
+            "navigation": "//nbb-navigation-proxy.notebooksbilliger.de/extensions/api/getNavigation.php",
+            "filter": "//nbb-filter-proxy.notebooksbilliger.de/extensions/apii/filter.php?filters=on",
+            "filterListing": "//nbb-filter-proxy.notebooksbilliger.de/extensions/apii/filter.php?filters=on&listing=on"
+        }
+    </script>
+
+    
+    <script src="includes/javascript/dist/app.min_11725224243594331.js"></script>
+    <script type="text/javascript" language="javascript" defer src="https://www.notebooksbilliger.de/includes/javascript/dist/main.min_280867591230022685.js?tracker=null"></script>
+
+        <script type="text/javascript" language="javascript" defer src="https://www.notebooksbilliger.de/includes/javascript/dist/getpid_158310902224333005.js"></script>
+            <link rel="stylesheet" type="text/css" href="https://www.notebooksbilliger.de/includes/css/dist/discount_notebook_1158913287191151513.css" />
+        
+    <link rel="canonical" href="https://www.notebooksbilliger.de/microsoft+surface+dock" />
+    <link rel="alternate" media="only screen and (max-width: 640px)"
+          href="http://m.notebooksbilliger.de/microsoft+surface+dock" >
+
+    <!--[if lt IE 9 & !IE 6]>
+    <script type="text/javascript" src="https://www.notebooksbilliger.de/includes/javascript/plugins3rd/epoq/excanvas.min.js"></script>
+    <![endif]-->
+            <script type="text/javascript" language="javascript" src="https://www.notebooksbilliger.de/includes/javascript/popup_window.js" defer></script>
+        <link rel="publisher" href="https://plus.google.com/107076845224716861737" />
+    <link rel="SHORTCUT ICON" href="https://www.notebooksbilliger.de/gfx/favicon.ico" />
+    <link rel="search" type="application/opensearchdescription+xml" title="notebooksbilliger.de - Suche" href="https://www.notebooksbilliger.de/includes/nbb_search_v4.xml" />
+            <link rel="image" href="https://www.notebooksbilliger.de/images/products/230000/238802/small_surface_dock_1.jpg?size=290" />
+        <link rel="image_src" href="https://www.notebooksbilliger.de/images/products/230000/238802/small_surface_dock_1.jpg?size=290" />
+        <meta property="og:image" content="https://www.notebooksbilliger.de/images/products/230000/238802/small_surface_dock_1.jpg?size=290"/>
+                    <meta property="og:image:width" content="290"/>
+            <meta property="og:image:height" content="290"/>
+            
+<script type='text/javascript'>
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+    (function() {
+        var gads = document.createElement('script');
+        gads.async = true;
+        gads.type = 'text/javascript';
+        var useSSL = 'https:' == document.location.protocol;
+        gads.src = (useSSL ? 'https:' : 'http:') +
+            '//www.googletagservices.com/tag/js/gpt.js';
+        var node = document.getElementsByTagName('script')[0];
+        node.parentNode.insertBefore(gads, node);
+    })();
+
+    googletag.cmd.push(function() {
+
+            googletag.defineSlot('/9562/notebooksbilliger/header/mitte', [[265,71]], 'headerMitte')
+            .addService(googletag.pubads())
+            .setCollapseEmptyDiv(true);
+            googletag.defineSlot('/9562/notebooksbilliger/zubehör_kabel/238802', [[728,90]], 'leaderBoard')
+            .addService(googletag.pubads())
+            .setCollapseEmptyDiv(true);
+            googletag.defineSlot('/9562/notebooksbilliger/zubehör_kabel/238802', [[160,600],[200,600]], 'wideSkyBanner')
+            .addService(googletag.pubads())
+            .setCollapseEmptyDiv(true);
+    
+        googletag.pubads()
+            .setTargeting('userKw', '')
+            .setTargeting('userTax', '499')
+            .setTargeting('puserid', '')
+            .enableSingleRequest();
+        googletag.enableServices();
+
+        function getLastSearchTermFromCookie() {
+            var cookie = new Cookie();
+            var searchTermHistory = cookie.get('search_term_history').split(',');
+            var searchTerm = "";
+
+            if (searchTermHistory) {
+                searchTerm = searchTermHistory[0];
+            }
+
+            return searchTerm;
+        }
+    });
+</script>
+        <script type='text/javascript'>
+            var params = 'products_id=238802&cPath=499&';
+            var hash   = window.location.hash;
+            hash   = hash.replace("#","");
+
+            var pairs  = new Object();
+
+            if (params != undefined) {
+                query  = params.split('&');
+                query.pop();
+                for (var i = 0; i < query.length; i++) {
+                    var varName = query[i].split('=');
+                    pairs[varName[0]] = varName[1];
+                }
+            }
+
+            // if old referrer campaign id tracking -> rewrite this into a new nbb and shortening to 6 chars
+            if (typeof(pairs.refcampaign_id) != 'undefined') {
+                pairs.nbb = pairs.refcampaign_id.slice(0,5);
+
+                // remove old refcampaign_id
+                delete pairs.refcampaign_id;
+
+                // rewrite params too
+                var prepareParams = new Array();
+
+                // change "url"
+                jQuery.each(pairs, function(index, value) {
+                    prepareParams.push(index + '=' + value);
+                });
+
+                params = prepareParams.join('&');
+            }
+
+            // set url params
+            var data   = "urlParams=" + encodeURIComponent(params);
+
+            if ((typeof(pairs.nbb) != 'undefined' && (typeof(pairs.wt_cc2) != 'undefined' || typeof(pairs.ref) != 'undefined'))
+                || (typeof(pairs.nbb) != 'undefined' && typeof(pairs.zanpid) != 'undefined')
+                || hash != 0
+            ) {
+                if (hash.length > 0) {
+                    data += '&hash=' + hash;
+                }
+
+                jQuery.ajax({
+                    type: "GET",
+                    url: "/extensions/api/affiliateTracking.php",
+                    data: data
+                });
+            }
+        </script>
+        <script type="text/javascript">var webtrekkConfig = {"trackId":"999661753100028","trackDomain":"now.notebooksbilliger.de","domain":"www.notebooksbilliger.de;www.sofort.com;secure.ogone.com;www.paypal.com;mobile.paypal.com;masterpass.com;img.notebooksbilliger.de;m.notebooksbilliger.de","cookie":"1","mediaCode":"refcampaign_id;ref_id;nbb;nbb_id;nbb_az;nbb_kw","contentId":"","executePluginFunction":"wt_cdb;wt_scrollposition;wt_productListTracking","globalVisitorIds":"true"};</script><script type="text/javascript" src="/includes/javascript/dist/webtrekk.min_45716102765740578.js"></script><script type="text/javascript">
+                        
+                        var webtrekk   = {"contentId":"de.Produktdetailseite.Zubeh\u00f6r & Kabel","linkTrack":"link","heatmap":"","form":"","contentGroup":{"1":"de","2":"Produktdetailseite","3":"Zubeh\u00f6r & Kabel"},"customParameter":{"1":"Produktdaten"},"customEcommerceParameter":{"3":"no","4":"A 594524","16":"179,99","10":"no","9":"Silber-Metallic","11":"","15":"Liefertermin noch unbestimmt","12":"499","13":"Zubeh\u00f6r & Kabel","18":"TABZ","27":"nein","19":"272","22":"Neuware","26":"Aktiv","5":"Produktdetailseite","17":"0,00"},"customSessionParameter":{"3":"a","4":"c","2":"unknown"},"product":"238802","productQuantity":"1","productStatus":"view","productCost":"179,99","productCategory":{"1":"Dockingstation","2":"Microsoft","3":"Microsoft Surface Dock","4":"230000\/238802\/middlesurface_dock_1.jpg"}}
+                        var ntHash     = window.location.hash.replace("#","");
+                        var regExpress = /^Q\d+(?:C|S)/;
+                        var wt_cdbData = wt_cdbData || [];
+
+                        if (ntHash.length != 0 && regExpress.test(ntHash) == true) {
+                            var clientID        = ntHash.slice(ntHash.indexOf("C"), ntHash.length);
+                            webtrekk.campaignId = encodeURIComponent('nbb=.' + ntHash);
+                        }
+                        
+                        try {
+                        var wt       = new webtrekkV3(webtrekk);
+wt.urmCategory = {1 : 'Gast'};
+wt.emailOptout = '2';
+wt.sendinfo();
+wt.customClickParameter = {1 : 'de.Produktdetailseite.Zubehör & Kabel', 9 : 'Produktdetailseite', 3 : '238802', 4 : 'A 594524', 5 : 'Microsoft Surface Dock - für Surface Pro 4, Surface Book und Surface Pro 3'};
+
+                        } catch(err) {
+                            if (typeof newrelic !== 'undefined') {
+                                var message = 'JSERROR: WEBTREKK ' + err.name + ' MESSAGE: ' + err.message;
+                                newrelic.addPageAction(message);
+                            }
+                        }
+                      </script>    <script type='text/javascript'>
+
+        jQuery(document).ready(function () {
+            // Customer recently viewed products part.
+            if (Webstorage.getInstance(Webstorage.LOCAL_STORAGE_NAME).isEnabled()) {
+                // Browser support Webstorage
+                // deactivate webstorage cause of cross domain access violation
+                var UseRecentlyViewedStorage = false;
+                var UseRecentlyViewedCookie = true;
+            } else {
+                // Browser do not support webstorage.
+                var UseRecentlyViewedStorage = false;
+                var UseRecentlyViewedCookie = true;
+            }
+        });
+        // set flag for adblockChecking
+        var adblockJsFile = false;
+    </script>
+    <script type="text/javascript" defer src="includes/javascript/advertisement.js"></script>
+    <!-- Start of notebooksbilliger Zendesk Widget script -->
+    
+<script type="text/javascript" async src="includes/javascript/dist/zendeskWidget_225609110654178040.js"></script>
+<script>
+    jQuery(window).load(function() {
+        jQuery.ajax({
+            url: 'includes/javascript/dist/zendeskWidgetExternal_32010322294725173.js',
+            dataType: 'script',
+            cache: true
+        }).done(function() {
+            var zendeskWidget = new ZendeskWidget();
+            zendeskWidget
+                .setChatStatus()
+                .setChatHide(1)
+                .setCustomer('{"name":false,"email":false}')
+                .init();
+        });
+    });
+</script>
+    <!-- End of notebooksbilliger Zendesk Widget script -->
+    <!-- Start of DY -->
+    <script type="text/javascript">
+    window.DY = window.DY || {};
+    DY.recommendationContext = {"type":"PRODUCT","data":["A594524"]};
+</script>
+<script type="text/javascript" src="//cdn.dynamicyield.com/api/8768792/api_dynamic.js"></script>
+<script type="text/javascript" src="//cdn.dynamicyield.com/api/8768792/api_static.js"></script>
+    <!-- End of DY -->
+    <!-- Criteo -->
+        <!-- EO Criteo -->
+<script type="text/javascript" src="/nbbaxdyzetwudaayesd.js" defer></script><style type="text/css">#d__fFH{position:absolute;top:-5000px;left:-5000px}#d__fF{font-family:serif;font-size:200px;visibility:hidden}#auyuybeyeyyuuwawfwrecayzzq{display:none!important}</style></head>
+<!--[if IE 7]>         <body class="isDesktop ie7 lt-ie10 lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <body class="isDesktop ie8 lt-ie10 lt-ie9"> <![endif]-->
+<!--[if IE 9]>         <body class="isDesktop ie9 lt-ie10"> <![endif]-->
+<!--[if gt IE 9]><!--> <body class="isDesktop"> <!--<![endif]-->
+
+
+        <script>try{(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-PMWK29')}catch(a){NREUM.noticeError(a)};</script>
+    <script type="text/javascript">
+        epoq_nbbRequestAppendix = "";
+        epoq_search_sessionId = "4l0ioqar1k23gst0uqtdcv1atmt6928dat4rnve3io7l9mvu9b4hvu9v8qddqnkgjm67u5roub6r660gm6gtcp6lmvg0uqchrcubie2";
+    </script>
+        <!-- w1 -->
+    <div class="main" id="page-main">
+        <!-- Header -->
+        <span id="wt_refpoint"></span>
+    <div class="header_line cf">
+        <div class="nbb-pageheader">                <a href="/" class="nbb_header_logo" data-wt="notebooksbilliger.de">
+                    <img src="gfx/header/nbb_header_logo_2014.png"
+                         width="382" height="32"
+                         class="header_logo_nbb"
+                         alt="notebooksbilliger.de"/>
+                </a>
+                                    <div id="banner_header_image" class="banner_header_image">
+                        <div id="headerMitte">
+                            <script type='text/javascript'>
+                                googletag.cmd.push(function () {
+                                    googletag.display('mitte');
+                                });
+                            </script>
+                        </div>
+                    </div>
+                                <div class="topBar">
+                                        <div class="head-account">
+                            <a data-wt="Anmelden" class="nbx-text-btn-base" id="loginButton" href="https://www.notebooksbilliger.de/zubehoer/microsoft+surface+dock/action/login">
+                                <i class="nbx-icon-header-user pre">&nbsp;</i>Anmelden                            </a>
+                        </div>
+                        <script type="text/javascript">
+                            jQuery('#loginButton').mouseover(function () {
+                                if (document.URL.indexOf("#!/q") >= 0) {
+                                    var params = document.URL.slice(document.URL.indexOf("#!/q"));
+                                    var url = "https://www.notebooksbilliger.de/zubehoer/microsoft+surface+dock/action/login";
+                                    jQuery('#loginButton').attr('href', url + params);
+                                }
+                            });
+                        </script>
+                                        <div class="head-notepad" id="notepad">
+                    <a data-wt="Merkzettel" class="nbx-text-btn-base notepad" href="https://www.notebooksbilliger.de/merkzettel">   <img src="gfx/ui/png/like_default_l.png" class="nl-heart-icon" alt="Merkzettel" role="presentation" />Merkzettel   <span id="notepad-number" data-notepad-count="0"></span></a>                </div>
+
+                <div class="head-contact">
+                    <a data-wt="FAQ / Hilfe" class="nbx-text-btn-base"
+                       href="https://support.notebooksbilliger.de/hc/de/"
+                       target="_blank"
+                       title="Zum notebooksbilliger.de Helpcenter">
+                        <span class="nbx-icon-header-contact pre"></span>FAQ / Hilfe
+                    </a>
+                </div>
+
+            </div>
+        </div>
+                    <div class="nbbapps">
+                <a class="icon_nbb icon_app-android"
+                   href="https://play.google.com/store/apps/details?id=com.nbb.app&amp;hl=de"
+                   target="_blank">
+                    <span title="Android">&nbsp;</span>
+                </a>
+                <a class="icon_nbb icon_app-iphone"
+                   href="https://itunes.apple.com/de/app/notebooksbilliger.de-die-shopping/id481326696"
+                   target="_blank">
+                    <span title="iPhone">&nbsp;</span>
+                </a>
+            </div>
+                </div>
+
+    <div style="clear:both; height:0; line-height:0;">&nbsp;</div>
+    <div class="header_line cf">
+        <div class="headersearch">
+
+            <!-- Kaufberater -->
+            <div id="searchex_scout" onclick="toggleAdvisorList('#searchex_scout');">
+            <span class="header_box searchex_scout">
+                <span class="nbx-text-btn-base nbx-big-icon header_box_label">
+                    <i class="nbx-icon-header-scout pre">&nbsp;</i>Kaufberater<i class="nbx-icon-arrow-right-blue suf">&nbsp;</i>
+                </span>
+            </span>
+                <div class="scout_list">
+                                                <div class="item">
+                                <a href="https://www.notebooksbilliger.de/notebook+berater">Notebook-Kaufberatung</a>
+                            </div>
+                                                        <div class="item">
+                                <a href="https://www.notebooksbilliger.de/drucker+kaufberatung">Drucker-Kaufberatung</a>
+                            </div>
+                                                        <div class="item">
+                                <a href="https://www.notebooksbilliger.de/beamer+beratung">Beamer-Kaufberatung</a>
+                            </div>
+                                                        <div class="item">
+                                <a href="https://www.notebooksbilliger.de/tv+kaufberatung">TV-Kaufberatung</a>
+                            </div>
+                                                        <div class="item">
+                                <a href="https://www.notebooksbilliger.de/waschmaschine+kaufberatung">Waschmaschinen-Kaufberatung</a>
+                            </div>
+                                                        <div class="item">
+                                <a href="https://www.notebooksbilliger.de/geschirrspueler+kaufberatung">Geschirrsp&uuml;ler-Kaufberatung </a>
+                            </div>
+                                            </div>
+            </div>
+
+            <!-- "searchborder" BEGIN -->
+            <div class="searchborder" id="searchhover">
+                                    <div class="search" id="epoq_typeahead">
+                        <div class="searchcontainer" id="searchcontainer">
+                            <form action="" method="get"
+                                  accept-charset="utf-8" id="epoq_searchform">
+                                <label class="searchbox_label" title="Suchbegriff eingeben"
+                                       for="epoq_typeaheadbox"><span>&nbsp;</span></label>
+                                <input type="hidden" name="enc" value="&#153;"/>
+                                <input type="text" name="searchbox" id="epoq_typeaheadbox" class="searchfield"
+                                       placeholder="Suchbegriff eingeben..."
+                                       value=""
+                                       maxlength="200"/>
+                                <script type="text/javascript">
+                                    document.getElementById('epoq_typeaheadbox').setAttribute("autocomplete", "off");
+                                </script>
+                                <button type="submit" data-wt="{'ck':{'2':'Epoq Suchen-Button','10':'not used'}}"
+                                        id="epoq_submit" class="header_box c_orange">Suchen
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                                    <!-- Button Erweitere Suche -->
+                <div id="searchex">
+                    <a href="https://www.notebooksbilliger.de/erweiterte+suche/notebooks+erweiterte+suche"
+                       class="header_box searchex">
+                    <span class="nbx-text-btn-base nbx-big-icon header_box_label">
+                        <i class="nbx-icon-header-searchEx pre">&nbsp;</i>Erweiterte Suche
+                    </span>
+                    </a>
+                </div>
+
+            </div>
+                        <div id="shoppingcart">
+                <a href="https://www.notebooksbilliger.de/warenkorb"
+                   class="header_box shoppingcart">
+
+                <span class="nbx-text-btn-base nbx-big-icon header_box_label">
+                    <i class="nbx-icon-header-cart pre">&nbsp;</i>
+
+                    Warenkorb
+                                        <i class="nbx-icon-arrow-right suf">&nbsp;</i>
+                </span>
+                </a>
+                            </div>
+        </div>
+
+                    <div class="headsocialicons">
+                <a class="icon_nbb icon_social-m-facebook first" data-wt="facebook"
+                   href="http://www.facebook.com/Notebooksbilliger" target="_blank">
+                    <span class="sr-only">Zum notebooksbilliger.de Facebook Auftritt</span>
+                </a>
+                <a class="icon_nbb icon_social-m-blog" data-wt="Blog" href="https://blog.notebooksbilliger.de"
+                   target="_blank">
+                    <span class="sr-only">Zum notebooksbilliger.de Blog</span>
+                </a>
+                <a class="icon_nbb icon_social-m-instagram" data-wt="Instagram"
+                   href="http://instagram.com/notebooksbilliger" target="_blank">
+                    <span class="sr-only">Zum notebooksbilliger.de Instagram Auftritt</span>
+                </a>
+                <a class="icon_nbb icon_social-m-eyeem" data-wt="youtube"
+                   href="https://www.youtube.com/user/notebooksbilliger" target="_blank">
+                    <span class="sr-only">Zum notebooksbilliger.de Youtube Auftritt</span>
+                </a>
+                <a class="icon_nbb icon_social-m-twitter" data-wt="twitter" href="http://twitter.com/#!/nbbilliger"
+                   target="_blank">
+                    <span class="sr-only">Zum notebooksbilliger.de Twitter Auftritt</span>
+                </a>
+                <a class="icon_nbb icon_social-m-gplus" data-wt="googleplus"
+                   href="https://plus.google.com/107076845224716861737/posts" target="_blank">
+                    <span class="sr-only">Zum notebooksbilliger.de Google Plus Auftritt</span>
+                </a>
+                <a class="icon_nbb icon_social-m-newsletter last" data-wt="newsletter"
+                   href="https://www.notebooksbilliger.de/newsletter">
+                    <span class="sr-only">Zum notebooksbilliger.de Newsletter Angebot</span>
+                </a>
+            </div>
+                </div>
+    <div style="clear:both; height:0; line-height:0;">&nbsp;</div>
+            <!-- Column Left -->
+        <div id="column_left" class="column_left">
+            <div class="page-nav-shop shop-type-private"><span class="navigation-head">Kategorien</span><ul class="navigation-section-0"><li class="navigation-entry is_passive first"><a class="navigation-label" href="/angebote">Angebote &amp; Aktionen</a></li><li class="navigation-entry is_passive has_children has_passive_children" data-navigation-id="1"><a class="navigation-label" href="/notebooks">Notebooks</a></li><li class="navigation-entry is_passive has_children has_passive_children" data-navigation-id="4804"><a class="navigation-label" href="/tablets">Tablets</a></li><li class="navigation-entry is_passive has_children has_passive_children" data-navigation-id="1101"><a class="navigation-label" href="/handys+smartphones">Handys &amp; Smartphones</a></li><li class="navigation-entry is_passive has_children has_passive_children" data-navigation-id="59"><a class="navigation-label" href="/pc+systeme">PC-Systeme</a></li><li class="navigation-entry is_passive has_children has_passive_children" data-navigation-id="7834"><a class="navigation-label" href="/gaming">Gaming</a></li><li class="navigation-entry is_passive has_children has_passive_children" data-navigation-id="181"><a class="navigation-label" href="/tft+monitore">Monitore</a></li><li class="navigation-entry is_passive has_children has_passive_children" data-navigation-id="4560"><a class="navigation-label" href="/pc+hardware">PC-Hardware</a></li><li class="navigation-entry is_passive has_children has_passive_children" data-navigation-id="639"><a class="navigation-label" href="/drucker">Drucker</a></li><li class="navigation-entry is_active has_children has_passive_children" data-navigation-id="499"><a class="navigation-label" href="/zubehoer">Zubehör &amp; Kabel</a><ul class="navigation-section-1"><li class="navigation-entry is_passive has_children has_passive_children first" data-navigation-id="757"><a class="navigation-label" href="/zubehoer/angeboteaktionen+zubehoer+kabel">Angebote &amp; Aktionen</a></li><li class="navigation-entry is_passive" data-navigation-id="15324"><a class="navigation-label" href="/notebooks/notebook+zubehoer+notebooks">Notebookzubehör</a></li><li class="navigation-entry is_passive" data-navigation-id="15325"><a class="navigation-label" href="/handys+smartphones/zubehoer+handys+smartphones">Handyzubehör</a></li><li class="navigation-entry is_passive" data-navigation-id="15326"><a class="navigation-label" href="/tablets/zubehoer+tablets">Tabletzubehör</a></li><li class="navigation-entry is_passive has_children has_passive_children" data-navigation-id="2166"><a class="navigation-label" href="/zubehoer/kabel+adapter+zubehoer">Kabel &amp; Adapter</a></li><li class="navigation-entry is_passive has_children has_passive_children" data-navigation-id="505"><a class="navigation-label" href="/zubehoer/taschen+zubehoer+kabel">Taschen</a></li><li class="navigation-entry is_passive has_children has_passive_children" data-navigation-id="15319"><a class="navigation-label" href="/zubehoer/eingabegeraete">Eingabegeräte</a></li><li class="navigation-entry is_passive has_children has_passive_children" data-navigation-id="15320"><a class="navigation-label" href="/zubehoer/speicher+usb">Speicher &amp; USB</a></li><li class="navigation-entry is_passive has_children has_passive_children" data-navigation-id="15322"><a class="navigation-label" href="/zubehoer/audio">Audio</a></li><li class="navigation-entry is_passive has_children has_passive_children" data-navigation-id="15323"><a class="navigation-label" href="/zubehoer/sicherheit+garantien+zubehoer+kabel">Sicherheit &amp; Garantien</a></li><li class="navigation-entry is_passive has_children has_passive_children" data-navigation-id="3351"><a class="navigation-label" href="/zubehoer/gaming+zubehoer">Gaming</a></li><li class="navigation-entry is_passive has_children has_passive_children" data-navigation-id="3654"><a class="navigation-label" href="/software">Software</a></li><li class="navigation-entry is_passive has_children has_passive_children last" data-navigation-id="14449"><a class="navigation-label" href="/zubehoer/weitere+artikel+zubehoer+kabel">Weitere Artikel</a></li></ul></li><li class="navigation-entry is_passive has_children has_passive_children" data-navigation-id="1862"><a class="navigation-label" href="/netzwerk">Netzwerk</a></li><li class="navigation-entry is_passive has_children has_passive_children" data-navigation-id="12082"><a class="navigation-label" href="/netzwerk/smart+home+netzwerk">Smart Home</a></li><li class="navigation-entry is_passive has_children has_passive_children" data-navigation-id="7313"><a class="navigation-label" href="/haushaltswaren">Haushaltsgeräte</a></li><li class="navigation-entry is_passive has_children has_passive_children" data-navigation-id="4482"><a class="navigation-label" href="/fernseher">Fernseher</a></li><li class="navigation-entry is_passive has_children has_passive_children" data-navigation-id="25"><a class="navigation-label" href="/beamer">Beamer</a></li><li class="navigation-entry is_passive has_children has_passive_children" data-navigation-id="4491"><a class="navigation-label" href="/audio+video+car">Audio, Video &amp; Car</a></li><li class="navigation-entry is_passive has_children has_passive_children" data-navigation-id="14369"><a class="navigation-label" href="/server+thinclients+usv">Server, ThinClients &amp; USV</a></li><li class="navigation-entry is_passive has_children has_passive_children" data-navigation-id="580"><a class="navigation-label" href="/software">Software</a></li><li class="navigation-entry is_passive has_children has_passive_children" data-navigation-id="4257"><a class="navigation-label" href="/0+finanzierung">0% Finanzierung</a></li><li class="navigation-entry is_passive has_children has_passive_children" data-navigation-id="53"><a class="navigation-label" href="/schnaeppchen+gutscheine">Restposten &amp; Gutscheine</a></li><li class="navigation-entry is_passive has_children has_passive_children" data-navigation-id="7248"><a class="navigation-label" href="/vorfuehrware+gebrauchtware">Gebraucht- &amp; Vorführware</a></li><li class="navigation-entry is_passive has_children has_passive_children last" data-navigation-id="6843"><a class="navigation-label" href="/studentenprogramm">Campusprogramm</a></li></ul></div><div class="page-nav-service"><span class="navigation-head">Service &amp; Support</span><ul class="navigation-section-0"><li class="navigation-entry is_passive first"><a class="navigation-label" href="https://support.notebooksbilliger.de/hc/de/" title="notebooksbilliger.de FAQ / Hilfe" target="_blank">FAQ / Hilfe</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/infocenter/section/impressum" title="notebooksbilliger.de Kontakt und Rücksendung">Kontakt &amp; Rücksendung</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/kundenkonto" title="notebooksbilliger.de Kundenkonto">Kundenkonto</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/jobs" title="notebooksbilliger.de Karrierecenter">Karrierecenter</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/infocenter/section/store" title="notebooksbilliger.de Stores">Ladengeschäfte / Stores</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/geschaeftskundenportal" title="notebooksbilliger.de Geschäftskundenportal">Geschäftskunden</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/systemhaus" title="notebooksbilliger.de öffentliche Auftraggeber">Öffentliche Auftraggeber</a></li><li class="navigation-entry is_passive has_children has_passive_children"><a class="navigation-label" href="/forum" title="notebooksbilliger.de Forum">Forum</a><ul class="navigation-section-1"><li class="navigation-entry is_passive has_children has_passive_children first"><a class="navigation-label" href="/forum/Allgemeines">Allgemeines</a><ul class="navigation-section-2"><li class="navigation-entry is_passive first"><a class="navigation-label" href="/forum/Allgemeines/Gaming">Gaming</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Allgemeines/Multimedia">Multimedia</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Allgemeines/Bastler">Bastler</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Allgemeines/Plauderecke">Plauderecke</a></li><li class="navigation-entry is_passive last"><a class="navigation-label" href="/forum/Allgemeines/Feedback+zum+Forum">Feedback zum Forum</a></li></ul></li><li class="navigation-entry is_passive has_children has_passive_children"><a class="navigation-label" href="/forum/andere+Produkte">andere Produkte</a><ul class="navigation-section-2"><li class="navigation-entry is_passive first last"><a class="navigation-label" href="/forum/andere+Produkte/Allgemeines">Allgemeines</a></li></ul></li><li class="navigation-entry is_passive has_children has_passive_children"><a class="navigation-label" href="/forum/Notebooks">Notebooks</a><ul class="navigation-section-2"><li class="navigation-entry is_passive first"><a class="navigation-label" href="/forum/Notebooks/Allgemeines">Allgemeines</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Notebooks/ACER">ACER</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Notebooks/APPLE">APPLE</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Notebooks/ASUS">ASUS</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Notebooks/Dell">Dell</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Notebooks/FUJITSU">FUJITSU</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Notebooks/HEWLETT+PACKARD">HEWLETT PACKARD</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Notebooks/IBMLENOVO">IBM/LENOVO</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Notebooks/LG">LG</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Notebooks/MEDION">MEDION</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Notebooks/MSI">MSI</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Notebooks/NBB">NBB</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Notebooks/Packard+Bell">Packard Bell</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Notebooks/SAMSUNG">SAMSUNG</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Notebooks/SONY">SONY</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Notebooks/RAZER">RAZER</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Notebooks/SCHENKER">SCHENKER</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Notebooks/TOSHIBA">TOSHIBA</a></li><li class="navigation-entry is_passive last"><a class="navigation-label" href="/forum/Notebooks/WEITERE">WEITERE</a></li></ul></li><li class="navigation-entry is_passive has_children has_passive_children"><a class="navigation-label" href="/forum/Tablets">Tablets</a><ul class="navigation-section-2"><li class="navigation-entry is_passive first"><a class="navigation-label" href="/forum/Tablets/Allgemeines">Allgemeines</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Tablets/Apple">Apple</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Tablets/HTC">HTC</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Tablets/Motorola">Motorola</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Tablets/Samsung">Samsung</a></li><li class="navigation-entry is_passive last"><a class="navigation-label" href="/forum/Tablets/Sonstige">Sonstige</a></li></ul></li><li class="navigation-entry is_passive has_children has_passive_children"><a class="navigation-label" href="/forum/Netbooks">Netbooks</a><ul class="navigation-section-2"><li class="navigation-entry is_passive first"><a class="navigation-label" href="/forum/Netbooks/Allgemeines">Allgemeines</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Netbooks/ACER">ACER</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Netbooks/ASUS">ASUS</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Netbooks/BELINEA">BELINEA</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Netbooks/HANNSPREE">HANNSPREE</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Netbooks/HEWLETT+PACKARD">HEWLETT PACKARD</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Netbooks/LENOVO">LENOVO</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Netbooks/LG">LG</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Netbooks/MEDION">MEDION</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Netbooks/MSI">MSI</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Netbooks/SAMSUNG">SAMSUNG</a></li><li class="navigation-entry is_passive last"><a class="navigation-label" href="/forum/Netbooks/WEITERE">WEITERE</a></li></ul></li><li class="navigation-entry is_passive has_children has_passive_children"><a class="navigation-label" href="/forum/Zubeh%F6r">Zubehör</a><ul class="navigation-section-2"><li class="navigation-entry is_passive first"><a class="navigation-label" href="/forum/Zubeh%F6r/Apple-Zubeh%F6r">Apple-Zubehör</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Zubeh%F6r/Arbeitsspeicher">Arbeitsspeicher</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Zubeh%F6r/Cardreader">Cardreader</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Zubeh%F6r/Digitale+Bilderrahmen">Digitale Bilderrahmen</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Zubeh%F6r/Dockingl%F6sungen">Dockinglösungen</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Zubeh%F6r/Ersatz-Zusatz-Akkus">Ersatz-/Zusatz-Akkus</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Zubeh%F6r/Gaming-Zubeh%F6r">Gaming-Zubehör</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Zubeh%F6r/Garantien">Garantien</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Zubeh%F6r/Headsets">Headsets</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Zubeh%F6r/Kabel++Adapter">Kabel &amp; Adapter</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Zubeh%F6r/K%FChler+und+Stands">Kühler und Stands</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Zubeh%F6r/Laufwerkserweit.">Laufwerkserweit.</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Zubeh%F6r/Lautsprecher">Lautsprecher</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Zubeh%F6r/M%E4use">Mäuse</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Zubeh%F6r/Notebookschl%F6sser">Notebookschlösser</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Zubeh%F6r/Pr%E4sentationsger%E4te">Präsentationsgeräte</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Zubeh%F6r/Reinigung+und+Schutz">Reinigung und Schutz</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Zubeh%F6r/Rohlinge">Rohlinge</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Zubeh%F6r/Scanner">Scanner</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Zubeh%F6r/Taschen">Taschen</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Zubeh%F6r/Tastaturen++Desktops">Tastaturen / Desktops</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Zubeh%F6r/%DCberspannungsschutz">Überspannungsschutz</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Zubeh%F6r/UMTS-Adapter">UMTS-Adapter</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Zubeh%F6r/USB-Adapter">USB-Adapter</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Zubeh%F6r/USB-SPEICHER">USB-SPEICHER</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Zubeh%F6r/USB-HUBS">USB-HUBS</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Zubeh%F6r/Webcams">Webcams</a></li><li class="navigation-entry is_passive last"><a class="navigation-label" href="/forum/Zubeh%F6r/WEITERE">WEITERE</a></li></ul></li><li class="navigation-entry is_passive has_children has_passive_children"><a class="navigation-label" href="/forum/PC-Systeme">PC-Systeme</a><ul class="navigation-section-2"><li class="navigation-entry is_passive first"><a class="navigation-label" href="/forum/PC-Systeme/Allgemeines">Allgemeines</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/PC-Systeme/ACER">ACER</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/PC-Systeme/APPLE">APPLE</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/PC-Systeme/ASUS">ASUS</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/PC-Systeme/BELINEA">BELINEA</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/PC-Systeme/FUJITSU">FUJITSU</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/PC-Systeme/HEWLETT+PACKARD">HEWLETT PACKARD</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/PC-Systeme/HM24">HM24</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/PC-Systeme/HYRICAN">HYRICAN</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/PC-Systeme/IBMLENOVO">IBM/LENOVO</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/PC-Systeme/MSI">MSI</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/PC-Systeme/NBB">NBB</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/PC-Systeme/Packard+Bell">Packard Bell</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/PC-Systeme/SONY">SONY</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/PC-Systeme/Zubeh%F6r">Zubehör</a></li><li class="navigation-entry is_passive last"><a class="navigation-label" href="/forum/PC-Systeme/WEITERE">WEITERE</a></li></ul></li><li class="navigation-entry is_passive has_children has_passive_children"><a class="navigation-label" href="/forum/TFT-Monitore">TFT-Monitore</a><ul class="navigation-section-2"><li class="navigation-entry is_passive first"><a class="navigation-label" href="/forum/TFT-Monitore/Allgemeines">Allgemeines</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/TFT-Monitore/43+-+48+cm+17+-+19">43 - 48 cm (17&quot; - 19&quot;)</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/TFT-Monitore/51+-+54+cm+20+-+21">51 - 54 cm (20&quot; - 21&quot;)</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/TFT-Monitore/55+-+58+cm+22+-+23">55 - 58 cm (22&quot; - 23&quot;)</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/TFT-Monitore/60+-+62+cm+24+-+25">60 - 62 cm (24&quot; - 25&quot;)</a></li><li class="navigation-entry is_passive last"><a class="navigation-label" href="/forum/TFT-Monitore/65+-+76+cm+26+-+30">65 - 76 cm (26&quot; - 30&quot;)</a></li></ul></li><li class="navigation-entry is_passive has_children has_passive_children"><a class="navigation-label" href="/forum/TV++Zubeh%F6r">TV &amp; Zubehör</a><ul class="navigation-section-2"><li class="navigation-entry is_passive first"><a class="navigation-label" href="/forum/TV++Zubeh%F6r/Allgemeines">Allgemeines</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/TV++Zubeh%F6r/LCD-TVs">LCD-TVs</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/TV++Zubeh%F6r/Plasma-TVs">Plasma-TVs</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/TV++Zubeh%F6r/Blu-ray+Player++Recorder">Blu-ray Player &amp; Recorder</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/TV++Zubeh%F6r/DVD-Player++Recorder">DVD-Player &amp; Recorder</a></li><li class="navigation-entry is_passive last"><a class="navigation-label" href="/forum/TV++Zubeh%F6r/TV-Receiver">TV-Receiver</a></li></ul></li><li class="navigation-entry is_passive has_children has_passive_children"><a class="navigation-label" href="/forum/Beamer">Beamer</a><ul class="navigation-section-2"><li class="navigation-entry is_passive first"><a class="navigation-label" href="/forum/Beamer/Allgemeines">Allgemeines</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Beamer/ACER">ACER</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Beamer/BENQ">BENQ</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Beamer/EPSON">EPSON</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Beamer/INFOCUS">INFOCUS</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Beamer/LG">LG</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Beamer/MITSUBISHI">MITSUBISHI</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Beamer/NEC">NEC</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Beamer/OPTOMA">OPTOMA</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Beamer/PANASONIC">PANASONIC</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Beamer/SAMSUNG">SAMSUNG</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Beamer/SANYO">SANYO</a></li><li class="navigation-entry is_passive last"><a class="navigation-label" href="/forum/Beamer/SONY">SONY</a></li></ul></li><li class="navigation-entry is_passive has_children has_passive_children"><a class="navigation-label" href="/forum/Handys">Handys</a><ul class="navigation-section-2"><li class="navigation-entry is_passive first"><a class="navigation-label" href="/forum/Handys/Allgemeines">Allgemeines</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Handys/HTC">HTC</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Handys/LG">LG</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Handys/MOBISTEL">MOBISTEL</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Handys/NOKIA">NOKIA</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Handys/SAMSUNG">SAMSUNG</a></li><li class="navigation-entry is_passive last"><a class="navigation-label" href="/forum/Handys/SONY+ERICSSON">SONY ERICSSON</a></li></ul></li><li class="navigation-entry is_passive has_children has_passive_children"><a class="navigation-label" href="/forum/Drucker">Drucker</a><ul class="navigation-section-2"><li class="navigation-entry is_passive first"><a class="navigation-label" href="/forum/Drucker/Allgemeines">Allgemeines</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Drucker/BROTHER">BROTHER</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Drucker/CANON">CANON</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Drucker/EPSON">EPSON</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Drucker/HEWLETT+PACKARD">HEWLETT PACKARD</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Drucker/KONICA+MINOLTA">KONICA MINOLTA</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Drucker/KYOCERA">KYOCERA</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Drucker/LEXMARK">LEXMARK</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Drucker/OKI">OKI</a></li><li class="navigation-entry is_passive last"><a class="navigation-label" href="/forum/Drucker/SAMSUNG">SAMSUNG</a></li></ul></li><li class="navigation-entry is_passive has_children has_passive_children"><a class="navigation-label" href="/forum/Software">Software</a><ul class="navigation-section-2"><li class="navigation-entry is_passive first"><a class="navigation-label" href="/forum/Software/Allgemeines">Allgemeines</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Software/Adobe">Adobe</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Software/Apple">Apple</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Software/Corel">Corel</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Software/G+Data">G Data</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Software/Kaspersky">Kaspersky</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Software/Lexware">Lexware</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Software/McAfee">McAfee</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Software/Microsoft">Microsoft</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Software/Nero">Nero</a></li><li class="navigation-entry is_passive last"><a class="navigation-label" href="/forum/Software/Symantec">Symantec</a></li></ul></li><li class="navigation-entry is_passive has_children has_passive_children"><a class="navigation-label" href="/forum/PC-Hardware">PC-Hardware</a><ul class="navigation-section-2"><li class="navigation-entry is_passive first"><a class="navigation-label" href="/forum/PC-Hardware/Prozessoren">Prozessoren</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/PC-Hardware/Arbeitsspeicher">Arbeitsspeicher</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/PC-Hardware/Mainboards">Mainboards</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/PC-Hardware/Grafikkarten">Grafikkarten</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/PC-Hardware/Festplatten">Festplatten</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/PC-Hardware/Solid+State+Drives+SSD">Solid State Drives (SSD)</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/PC-Hardware/DVD-Laufwerke">DVD-Laufwerke</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/PC-Hardware/Soundkarten">Soundkarten</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/PC-Hardware/Geh%E4use">Gehäuse</a></li><li class="navigation-entry is_passive last"><a class="navigation-label" href="/forum/PC-Hardware/Netzteile">Netzteile</a></li></ul></li><li class="navigation-entry is_passive has_children has_passive_children"><a class="navigation-label" href="/forum/Netzwerk">Netzwerk</a><ul class="navigation-section-2"><li class="navigation-entry is_passive first last"><a class="navigation-label" href="/forum/Netzwerk/Allgemeines">Allgemeines</a></li></ul></li><li class="navigation-entry is_passive has_children has_passive_children last"><a class="navigation-label" href="/forum/Spiele++Konsolen">Spiele &amp; Konsolen</a><ul class="navigation-section-2"><li class="navigation-entry is_passive first"><a class="navigation-label" href="/forum/Spiele++Konsolen/Sony">Sony</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Spiele++Konsolen/Nintendo">Nintendo</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Spiele++Konsolen/Microsoft">Microsoft</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Spiele++Konsolen/WIZ">WIZ</a></li><li class="navigation-entry is_passive"><a class="navigation-label" href="/forum/Spiele++Konsolen/Spiele-Software">Spiele-Software</a></li><li class="navigation-entry is_passive last"><a class="navigation-label" href="/forum/Spiele++Konsolen/Sonstiges">Sonstiges</a></li></ul></li></ul></li><li class="navigation-entry is_passive last"><a class="navigation-label" href="https://blog.notebooksbilliger.de/" title="notebooksbilliger.de Blog" target="_blank">notebooksbilliger.de Blog</a></li></ul></div>        </div>
+        <div id="main_content" class="content">
+            <div class="rahmen">
+                <div id="wait1"></div>
+                <div id="wait2" style="margin-left:160px;">
+                    <img src="https://www.notebooksbilliger.de/gfx/loader_20140331.gif" alt="" class="left" />
+                    <div id ="wait2Content" style="float:right; text-align: left; padding-left: 10px;">
+                        <span id ="wait2Span" class="wait-title">Ihre Anfrage wird bearbeitet.</span><br/>
+                        Bitte haben Sie einen Moment Geduld.
+                    </div>
+                </div>
+                <div id="wait3" style="margin-left:350px;position:fixed;top:375px;text-align:center;background:#fff;padding:30px;border:1px solid #000;display:none;z-index:99;"><img src="https://www.notebooksbilliger.de/gfx/loader_20090428.gif" alt="" /></div>
+                    <div class="breadcrumb breadcrumb_private">
+                <div class="text" id="path_text">
+            <div style="display: inline;" itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">
+                <a href="https://www.notebooksbilliger.de/" itemprop="url"> <span itemprop="title">Startseite</span></a>
+            </div>
+             <span class="icon_nbb icon_bc">&nbsp;</span> <div style="display: inline;" itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="https://www.notebooksbilliger.de/zubehoer" itemprop="url"><span itemprop="title">Zubeh&ouml;r &amp; Kabel</span></a></div>        </div>
+                <br style="clear: both;" />
+</div>
+        <span itemprop="category" content="Elektronik > Computer > Computerzubehör > Laptopzubehör > Laptop-Dockingstationen"></span>
+                <!-- w2 -->
+                                <div id="epoq_bannerresult"></div>
+                <div id="epoq_contentresult"></div>
+                <div id="epoq_currentSearch"></div>
+                <div id="epoq_filterresult"></div>
+                <div id="epoq_searchresult">
+                        <script type="text/javascript">
+        //<![CDATA[
+        function showFlashPlayer() {
+            return;
+        }
+        //]]>
+    </script>
+    <div class="product_detail pds_info">
+<div id="product_page_detail" class="border product_detail_wrapper" itemscope="" itemtype="http://schema.org/Product" data-products-id="238802" data-products-number="A 594524">
+    <div class="left_column pdw_lc">
+    <div class="product_headline">
+            <div class="image_container">
+            <img src="gfx/hersteller_logos/microsoft.gif" alt="Microsoft logo" />
+        </div>
+    
+    <h1 class="name squeezed" itemprop="name">
+                    Microsoft Surface Dock - für Surface Pro 4, Surface Book und Surface Pro 3
+            </h1>
+</div>
+
+    <div class="features_box">
+    
+    
+    
+            <span class="nbb-sprite-pds nbb-sprite-pds-finanzierung_moeglich">
+            <span class="sr-only">Notebooksbilliger.de 0% Finanzierung Artikel</span>
+        </span>
+    </div>
+
+    <div class="image-wrapper">
+        <div class="overlay_container">
+        <div class="displayed_image_container">
+                        
+            <div class="easyzoom easyzoom--adjacent">
+
+                <a href="//media.nbb-cdn.de/images/products/230000/238802/surface_dock_1.jpg?size=2800" target="_blank"
+                   class="detailImageHandler"
+                   onclick="openLightbox(); return false;"
+                   data-index="0"
+                   data-wt="Produktbild"
+                >
+
+                    <span class="product_detail_image_helper">&nbsp;</span>
+                                        <img id="detailimage" class="product_detail_img"
+                         src="//media.nbb-cdn.de/images/products/230000/238802/surface_dock_1.jpg"
+                         alt="Microsoft Surface Dock - für Surface Pro 4, Surface Book und Surface Pro 3" border="0" />
+                </a>
+            </div>
+
+                        
+            
+            
+        </div>
+
+                            <span class="zoom-handle">
+                <a href="https://www.notebooksbilliger.de/popup_slideshow.php/pID/238802"
+                   target="_blank"
+                   rel="nofollow"
+                   class="lightboxEnlargeHandler icon_nbb icon_magnify"
+                   data-wt="Vergrößern"
+                   onclick="openLightbox(); return false;">
+                    &nbsp;
+                </a>
+            </span>
+        
+                    </div>
+
+            <div class="slideBarContainer">
+                                                    
+            <div class="sliderViewPort">
+
+                <div id="slidebar" class="centered">
+                                            <a href="https://media.nbb-cdn.de/images/products/230000/238802/surface_dock_1.jpg?size=2800"
+                           class="sliderThumb image"
+                           data-wt="Produktbild-Vorschau 0"
+                           rel="lightbox[Produkt]"
+                           data-index="0"
+                           data-type="image"
+                           data-filename="surface_dock_1.jpg"
+                           data-path="https://media.nbb-cdn.de/images/products/230000/238802/"
+                           title="Produktbild">
+                                <img class="lbThumb" src="https://media.nbb-cdn.de/images/products/230000/238802/small_slider_surface_dock_1.jpg" alt="" />
+                        </a>
+                                            <a href="https://media.nbb-cdn.de/images/products/230000/238802/surface_dock_2.jpg?size=2800"
+                           class="sliderThumb image"
+                           data-wt="Produktbild-Vorschau 1"
+                           rel="lightbox[Produkt]"
+                           data-index="1"
+                           data-type="image"
+                           data-filename="surface_dock_2.jpg"
+                           data-path="https://media.nbb-cdn.de/images/products/230000/238802/"
+                           title="Produktbild">
+                                <img class="lbThumb" src="https://media.nbb-cdn.de/images/products/230000/238802/small_slider_surface_dock_2.jpg" alt="" />
+                        </a>
+                                            <a href="https://media.nbb-cdn.de/images/products/230000/238802/surface_dock_3.jpg?size=2800"
+                           class="sliderThumb image"
+                           data-wt="Produktbild-Vorschau 2"
+                           rel="lightbox[Produkt]"
+                           data-index="2"
+                           data-type="image"
+                           data-filename="surface_dock_3.jpg"
+                           data-path="https://media.nbb-cdn.de/images/products/230000/238802/"
+                           title="Produktbild">
+                                <img class="lbThumb" src="https://media.nbb-cdn.de/images/products/230000/238802/small_slider_surface_dock_3.jpg" alt="" />
+                        </a>
+                                            <a href="https://media.nbb-cdn.de/images/products/230000/238802/surface_dock_4.jpg?size=2800"
+                           class="sliderThumb image"
+                           data-wt="Produktbild-Vorschau 3"
+                           rel="lightbox[Produkt]"
+                           data-index="3"
+                           data-type="image"
+                           data-filename="surface_dock_4.jpg"
+                           data-path="https://media.nbb-cdn.de/images/products/230000/238802/"
+                           title="Produktbild">
+                                <img class="lbThumb" src="https://media.nbb-cdn.de/images/products/230000/238802/small_slider_surface_dock_4.jpg" alt="" />
+                        </a>
+                    
+                                    </div>
+            </div>
+        </div>
+
+    
+        <div class="lbFooter cf isDesktop" style="display: none;">
+        
+    </div>
+
+        </div>
+<div class="clb"></div>
+
+    <div class="popularity_box">
+    <div class="link_box">
+        <a href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Fwww.notebooksbilliger.de%2Fmicrosoft%2Bsurface%2Bdock"
+           title="auf Facebook teilen"
+           target="_blank"
+           data-wt="Produktempfehlung - Facebook"
+           class="share_link facebook_share_link">&nbsp;</a>
+
+                <a href="https://plus.google.com/share?url=https%3A%2F%2Fwww.notebooksbilliger.de%2Fmicrosoft%2Bsurface%2Bdock&text=Microsoft%20Surface%20Dock%20-%20f%FCr%20Surface%20Pro%204%2C%20Surface%20Book%20und%20Surface%20Pro%203&img=https%3A%2F%2Fwww.notebooksbilliger.de%2Fimages%2Fproducts%2F230000%2F238802%2Fsmall_surface_dock_1.jpg%3Fsize%3D290&image=https%3A%2F%2Fwww.notebooksbilliger.de%2Fimages%2Fproducts%2F230000%2F238802%2Fsmall_surface_dock_1.jpg%3Fsize%3D290"
+           title="auf Google+ teilen"
+           target="_blank"
+           data-wt="Produktempfehlung - Google"
+           class="share_link google_share_link">&nbsp;</a>
+
+        <a href="http://twitter.com/share?url=https%3A%2F%2Fwww.notebooksbilliger.de%2Fmicrosoft%2Bsurface%2Bdock&text=Microsoft%20Surface%20Dock%20-%20f%FCr%20Surface%20Pro%204%2C%20Surface%20Book%20und%20Surface%20Pro%203"
+           title="auf Twitter teilen"
+           target="_blank"
+           data-wt="Produktempfehlung - Twitter"
+           class="share_link twitter_share_link">&nbsp;</a>
+    </div>
+        <div class="link_box">
+        <span class="textlink-nbb textlink-notepad va-mid"
+              data-products-id="238802"
+              data-section="pdp"
+              data-is-campus-product="off"
+              data-notepad-icon="on"
+              data-wt="Auf den Merkzettel">
+            <span class="nbb_icon_new nbb_icon_new-like_default_l va-mid notepad-icon"></span>
+            <span class="notepad-label">Merken</span>
+        </span>
+    </div>
+            <div class="link_box">
+        <span
+           data-url="https://www.notebooksbilliger.de/produkt+vergleich"            class="textlink-nbb va-mid"
+           data-product-compare="on"
+           data-products-id="238802"
+           data-is-campus-product="off"
+        >
+            <span class="icon_nbb icon_compare">&nbsp;</span>Vergleichen
+        </span>
+    </div>
+    </div>
+
+            
+        
+                <div class="outerDiscount">
+        <div class="topAccessoriesTitle">
+            <span class="nbb-sprite-pds nbb-sprite-pds-title_topaccessories">&nbsp;</span>
+            <h3 class="sr-only">Top-Zubeh&oumlr:</h3>
+        </div>
+        
+            <div class="bundleDiscount  left " data-marketing-id="2831">
+                <div class="discountImageContainer">
+                    <a href="https://www.notebooksbilliger.de/hama+notebookstaender+in+carbonoptik+bis+184"
+                       id="attribute_link_150559"
+                       title="Hama Notebookständer in Carbonoptik [bis 18,4&quot;] "
+                       class="bundleDiscountImgLink"
+                       data-wt="{'ct':'Topzubehör', 'ck': {'2': 'Bundle 150559'}}"
+                       target="_blank" >
+
+                        <img src="//media.nbb-cdn.de/images/products/150000/150559/middle00053073abx.jpg?size=290" alt="Hama Notebookständer in Carbonoptik [bis 18,4&quot;] "
+                             class="discountProductImg" />
+                    </a>
+
+                                            <div class="stop-sign top-left">
+                            <div class="stop-sign-content">
+                                <div class="value">25  % </div>
+                                <div class="text">sparen</div>
+                            </div>
+                        </div>
+                    
+                </div>
+
+                <div class="content">
+                    <div class="discountTitle"><span>Jetzt noch ein Hama Notebookständer dazu kaufen und 25 % sparen!</span></div>
+
+                    <div class="rerenderFontSvg"><svg class="nbb_price_38 rerenderFont" width="100%"><g class="nbb_price_38"><text dx=".07em" y=".82em" class="nbb-svg-shadow">11,99<tspan class="nbb-currency">&nbsp;Euro</tspan></text><text dx=".05em" y=".8em" class="nbb-svg-outline">11,99<tspan class="nbb-currency">&nbsp;Euro</tspan></text><text dx=".05em" y=".8em" class="nbb-svg-base">11,99<tspan class="nbb-currency">&nbsp;Euro</tspan></text></g></svg></div>
+                    <div class="rerenderFontDefault">
+                        <span class="priceDiscount">11,99<span> EURO</span></span>
+                    </div>
+
+                                            <div class="priceSmall">Statt: 15,99 Euro</div>
+                    
+                    <form name="add_groupdiscount_form" method="post" action="https://www.notebooksbilliger.de/zubehoer/microsoft+surface+dock/nbb/pla.google_/wt_cc2/911-0002_Zubeh%25F6r_238802/gclid/Cj0KCQiAh_DTBRCTARIsABlT9Mb3BtwEYWe7ag60Ekty-tvtH8JkA2_jzNb3sdlrP3FwZ0iAsAtRXDkaArYREALw_wcB/action/add_products_groupdiscount" data-products-price="11.99" data-products-number="A 532003">
+                        <input type="hidden" name="products_id" value="238802"/>
+
+                        
+                        <input type="hidden" name="discount_products_id" value="150559"/>
+                        <div class="bundleDiscountButton">
+                            <button type="submit"
+                                    value="Beides in den Warenkorb"
+                                    name="add_groupdiscount_form"
+                                    class="nbb-btn
+                                    "
+                                    data-wt="{'ct':'Topzubehör - in den Warenkorb', 'ck': {'2':'Bundle 150559'}}" >
+                                <i class="icon_nbb icon_shoppingcart va-mid">&nbsp;</i>Beides in den Warenkorb
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        
+            <div class="bundleDiscount  right " data-marketing-id="2418">
+                <div class="discountImageContainer">
+                    <a href="https://www.notebooksbilliger.de/high+speed+hdmi+kabel+mit+ethernet+12m+schwarz"
+                       id="attribute_link_284822"
+                       title="High-Speed HDMI-Kabel mit Ethernet 1,2m schwarz [HDMI-Stecker &gt; HDMI-Stecker]"
+                       class="bundleDiscountImgLink"
+                       data-wt="{'ct':'Topzubehör', 'ck': {'2': 'Bundle 284822'}}"
+                       target="_blank" >
+
+                        <img src="//media.nbb-cdn.de/images/products/280000/284822/middleHDMI-Kabel_1.jpg?size=290" alt="High-Speed HDMI-Kabel mit Ethernet 1,2m schwarz [HDMI-Stecker &gt; HDMI-Stecker]"
+                             class="discountProductImg" />
+                    </a>
+
+                                            <div class="stop-sign top-left">
+                            <div class="stop-sign-content">
+                                <div class="value">20  % </div>
+                                <div class="text">sparen</div>
+                            </div>
+                        </div>
+                    
+                </div>
+
+                <div class="content">
+                    <div class="discountTitle"><span>Jetzt ein 1,2m HDMI Kabel dazu kaufen und 20 % sparen!</span></div>
+
+                    <div class="rerenderFontSvg"><svg class="nbb_price_38 rerenderFont" width="100%"><g class="nbb_price_38"><text dx=".07em" y=".82em" class="nbb-svg-shadow">7,99<tspan class="nbb-currency">&nbsp;Euro</tspan></text><text dx=".05em" y=".8em" class="nbb-svg-outline">7,99<tspan class="nbb-currency">&nbsp;Euro</tspan></text><text dx=".05em" y=".8em" class="nbb-svg-base">7,99<tspan class="nbb-currency">&nbsp;Euro</tspan></text></g></svg></div>
+                    <div class="rerenderFontDefault">
+                        <span class="priceDiscount">7,99<span> EURO</span></span>
+                    </div>
+
+                                            <div class="priceSmall">Statt: 9,99 Euro</div>
+                    
+                    <form name="add_groupdiscount_form" method="post" action="https://www.notebooksbilliger.de/zubehoer/microsoft+surface+dock/nbb/pla.google_/wt_cc2/911-0002_Zubeh%25F6r_238802/gclid/Cj0KCQiAh_DTBRCTARIsABlT9Mb3BtwEYWe7ag60Ekty-tvtH8JkA2_jzNb3sdlrP3FwZ0iAsAtRXDkaArYREALw_wcB/action/add_products_groupdiscount" data-products-price="7.99" data-products-number="A 641548">
+                        <input type="hidden" name="products_id" value="238802"/>
+
+                        
+                        <input type="hidden" name="discount_products_id" value="284822"/>
+                        <div class="bundleDiscountButton">
+                            <button type="submit"
+                                    value="Beides in den Warenkorb"
+                                    name="add_groupdiscount_form"
+                                    class="nbb-btn
+                                    "
+                                    data-wt="{'ct':'Topzubehör - in den Warenkorb', 'ck': {'2':'Bundle 284822'}}" >
+                                <i class="icon_nbb icon_shoppingcart va-mid">&nbsp;</i>Beides in den Warenkorb
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+            </div>
+
+    <div class="clearfix"></div>
+
+    </div>
+
+    <div class="right_column pdw_rc">
+    <div class="rating_widget section_nav" itemprop="aggregateRating" itemscope="itemscope" itemtype="http://schema.org/AggregateRating">
+            <meta itemprop="ratingCount" content="9" />
+        <meta itemprop="reviewCount" content="9" />
+    
+    <meta itemprop="ratingValue"
+          content="
+                    3.5
+                " />
+    <meta itemprop="bestRating" content="5" />
+    <meta itemprop="worstRating" content="1" />
+    <a href="https://www.notebooksbilliger.de/microsoft+surface+dock#section_customerReviews"
+           class="b_content_bewertung section_link"
+           title="Microsoft Surface Dock - für Surface Pro 4, Surface Book und Surface Pro 3 bewerten"
+           data-wt="{'ct':'Bewertungen','ck':{'2':'Produktbild-Box'}}"><span class="star-wrapper" title="Bewertung: 3.5 von 5"><span class="star-rating" style="width: 70%;"></span></span>
+            (9)        </a></div>
+    <div class="article_number" itemprop="sku" content="mpn:A 594524">
+    Artikelnummer: A 594524
+</div>
+
+    
+
+    
+    
+
+    
+    
+    <div>
+    <form name="cart_quantity" method="post"
+          action="https://www.notebooksbilliger.de/zubehoer/microsoft+surface+dock/action/add_product">
+        <div class="availability_widget">
+                    <div class="warehouse">
+            <span class="nbb-sprite-pds nbb-sprite-pds-sofort_ablager va-mid"><span class="sr-only">Verf&uuml;gbarkeit: </span></span>
+            Liefertermin noch unbestimmt
+            
+                    </div>
+    
+    </div>
+
+        
+        
+            <div class="product_price_default mtb-18"
+         itemprop="offers"
+         itemscope=""
+         itemtype="http://schema.org/Offer">
+        <div id="product_detail_price" class="p_price "
+             data-price="179,99"
+             itemprop="price"
+             content="179.99">
+            <div class="rerenderFontSvg p_price_svg">
+                <svg class="nbb_price_120 nbb-price-decimal-top rerenderFont" width="100%"><g class="nbb_price_120 nbb-price-decimal-top"><text dx=".07em" y=".82em" class="nbb-svg-shadow">179,<tspan dy="-.47em" dx="0">99</tspan></text><text dx=".05em" y=".8em" class="nbb-svg-outline">179,<tspan dy="-.47em" dx="0">99</tspan></text><text dx=".05em" y=".8em" class="nbb-svg-base">179,<tspan dy="-.47em" dx="0">99</tspan></text></g></svg>
+            </div>
+            <div class="nbb_price_120 rerenderFontDefault p_price_default" data-price="179,99">
+                <span class="p_price_full dp-inbl">179,</span>
+                <span class="p_price_decimal_top dp-inbl va-top">99</span>
+            </div>
+            <div class="p_price_mwst_info font-grey-light">
+                    <span class="" itemprop="priceCurrency" content="EUR">
+                                                    inkl. MwSt.
+                                            </span>
+                                    <div class="deliveryCostsNotice">
+                        zzgl.&nbsp;<a rel="nofollow"
+                                      href="https://www.notebooksbilliger.de/infocenter/versandkosten"
+                                      target="_blank"
+                                      data-wt="Versandkosten Info">Versand</a><br> ab 4,99 Euro
+                    </div>
+                            </div>
+        </div>
+                    <div class="p_price_uvp font-grey-dark">
+                <span>UVP: 229,99 Euro</span>
+            </div>
+                            <div class="p_price_saving font-red">
+                    <span>Ersparnis: 50,00 Euro (22%)</span>
+                </div>
+                        </div>
+
+        <div class="shopping_cart_btn">
+    <input type="hidden" name="products_id" value="238802" />
+    <input type="hidden" name="categories_id" value="499" />
+
+    
+                        <button type="submit"
+                    class="nbb-btn btn_full"
+                    data-wt="{'ct':'in den Warenkorb','ck': {'2':'Warenkorb'}}">
+                <i class="nbb-sprite-pds nbb-sprite-pds-warenkorb va-mid">&nbsp;</i>
+                Jetzt vorbestellen
+            </button>
+                </div>
+
+        
+        <div class="mtb-18 availability_widget">
+            <div class="store clearfix">
+            <span class="nbb-sprite-pds nbb-sprite-pds-store_icon va-mid"></span>
+            <span class="list_names">
+                In den Stores                                                        <a href="/infocenter/section/store/city/munich#store_munich" target="_blank">München</a>
+                    &amp;                                                        <a href="/infocenter/section/store/city/duesseldorf#store_duesseldorf" target="_blank">Düsseldorf</a>
+                    &amp;                                                        <a href="/infocenter/section/store/city/sarstedt#store_sarstedt" target="_blank">Hannover/Laatzen</a>
+                                                    erhältlich
+            </span>
+        </div>
+    
+    </div>
+    </form>
+</div>
+    
+    
+    
+            
+    </div>
+</div>
+<div style="clear:both;"></div>
+    </div>
+
+    <div style="clear:both;"></div>
+
+
+    <div class="pds_content-divider pds_info" style="height:1px; margin-top:10px;"></div>
+    <br />
+
+    <div id="productDetailSection" class="productDetailSection pds_info">
+    <div id="navbar" class="section_links section_nav">
+    <i class="nbb-sprite-pds nbb-sprite-pds-title_most_important"></i>
+    <div class="section_tabs">
+                    <div class="section_link_container dp-inbl first">
+                                    <a class="section_link" href="https://www.notebooksbilliger.de/microsoft+surface+dock/eqsqid/7225fee7-3a06-45dc-b712-9ba10a92c3ed#section_info" data-wt='{"ct":"Produktbeschreibung","ck": {"2":"Produktbeschreibung"}}'
+                    >Produktbeschreibung</a><span class="arrow"></span>
+                            </div>
+                    <div class="section_link_container dp-inbl">
+                                    <a class="section_link" href="https://www.notebooksbilliger.de/microsoft+surface+dock/eqsqid/7225fee7-3a06-45dc-b712-9ba10a92c3ed#section_properties" data-wt='{"ct":"Technische Daten","ck": {"2":"Technische Daten"}}'
+                    >Technische Daten</a><span class="arrow"></span>
+                            </div>
+                    <div class="section_link_container dp-inbl">
+                                    <a class="section_link" href="https://www.notebooksbilliger.de/microsoft+surface+dock/eqsqid/7225fee7-3a06-45dc-b712-9ba10a92c3ed#section_customerReviews" data-wt='{"ct":"Kundenbewertungen","ck": {"2":"Kundenbewertungen"}}'
+                    >Kundenbewertungen</a><span class="arrow"></span>
+                            </div>
+                    <div class="section_link_container dp-inbl">
+                                    <a class="section_link" href="https://www.notebooksbilliger.de/microsoft+surface+dock/eqsqid/7225fee7-3a06-45dc-b712-9ba10a92c3ed#section_customerQuestions" data-wt='{"ct":"Fragen und Antworten","ck": {"2":"Fragen und Antworten"}}'
+                    >Fragen &amp; Antworten</a><span class="arrow"></span>
+                            </div>
+                    <div class="stretch"></div>
+    </div>
+</div>
+<div class="detail_nav_content product_tab_info" xmlns="http://www.w3.org/1999/html">
+<div id="detail_promo">
+    <div class="pds_section" id="section_info" data-section-id="info" data-wt-section-name="description">
+        <div class="pds_section_title">
+            <i class="nbb-sprite-pds nbb-sprite-pds-title_description va-mid">&nbsp;</i>
+            <h3 class="sr-only">Produktbeschreibung</h3>
+                            <div class="pdf_printview dp-inbl va-mid">
+                    <span class="nbb-sprite-pds nbb-sprite-pds-druckansicht-icon dp-inbl va-mid"></span>
+                    <a class="printView_link dp-inbl va-mid" href="https://www.notebooksbilliger.de/druckansicht/microsoft+surface+dock" target="_blank" rel="nofollow"
+                       data-wt="{'ct':'content.pdp.description.print view','ck':{'2':'Druckansicht'}}">
+                        PDF Druckansicht
+                    </a>
+                </div>
+                    </div>
+        <div class="pds_toggle_content">
+                            
+                <div class="dp-inbl description_title">
+                    <span>Microsoft Surface Dock - für Surface Pro 4, Surface Book und Surface Pro 3</span>
+                </div>
+                <div class="clearfix"></div>
+                                    
+                    <img src="https://media.nbb-cdn.de/images/misc/surface_dock_Detailbild.png" alt="" width="780" height="370"  /><br /><br />
+<ul>
+<li>Jede Menge Leistung f&uuml;r Surface und Zubeh&ouml;r&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+<li>Surface Connect-Kabel mit hoher &Uuml;bertragungsgeschwindigkeit sowie Gigabit-Ethernet-Anschluss</li>
+<li>Mehrere USB-Anschl&uuml;sse f&uuml;r Ihr gesamtes Lieblingszubeh&ouml;r</li>
+<li>Audioausgang f&uuml;r Ihre Lieblingslautsprecher oder -kopfh&ouml;rer</li>
+</ul>
+<br />
+<h3 style="clear: both;">Microsoft Adapter f&uuml;r das maximale Nutzungserlebnis.</h3>
+<img style="float: left; margin-left: 10px; margin-right: 10px;" src="//img.notebooksbilliger.de/images/misc/vga1_feature_1x.jpg" alt="" width="74"  /> Mit der Auswahl an originalen Surface-Adaptern f&uuml;r Ethernet-, VGA- und HDMI-Anschluss<br />erreichen Sie maximale Konnektivit&auml;t und k&ouml;nnen Ihr Surface-Erlebnis voll aussch&ouml;pfen.<br />Zu den Adaptern:&nbsp;<a href="https://www.notebooksbilliger.de/microsoft+ethernet+adapter/eqsqid/2e4d6fea-6fb2-4258-b9b7-0f3034ba23aa" target="_blank"><span style="color: #e26200;">Ethernet</span></a> ,&nbsp;<a href="https://www.notebooksbilliger.de/products_id/307509" target="_blank"><span style="color: #e26200;">VGA</span></a> , <a href="https://www.notebooksbilliger.de/products_id/307505" target="_blank"><span style="color: #e26200;">HDMI</span></a><br />
+<table>
+<tbody>
+<tr>
+<td>
+<h3>Frisch ans Werk<strong><br /></strong></h3>
+Surface Dock verwandelt Ihr superhandliches Surface im Handumdrehen in einen Desktop-PC. Stecken Sie einfach das Surface Connect-Kabel ein, um Ihr Ger&auml;t zu laden und externe Monitore, eine Tastatur, eine Maus und andere Peripherieger&auml;te zu nutzen. Suchen Sie sich den perfekten Blickwinkel, oder positionieren Sie Ihr Ger&auml;t f&uuml;r die Stiftverwendung. Steigern Sie Ihre Produktivit&auml;t &ndash; mit dem Surface Dock.<strong><br /></strong></td>
+<td><img src="//img.notebooksbilliger.de/images/misc/withsurface_feature_1x.png" alt="" width="310" height="190"  /></td>
+</tr>
+<tr>
+<td><strong>&nbsp; <img src="//img.notebooksbilliger.de/images/misc/dock1-gray_feature__1x.png" alt="" width="254" height="156"  /></strong></td>
+<td>
+<h3>Zahlreiche Anschlussm&ouml;glichkeiten</h3>
+Das Ger&auml;t verf&uuml;gt trotz seines schlanken und kompakten Designs &uuml;ber zwei HD-Videoanschl&uuml;sse, einen Gigabit-Ethernet-Anschluss, vier ultraschnelle USB 3.0-Anschl&uuml;sse und einen Audioausgang. Damit sind Sie f&uuml;r alle Eventualit&auml;ten ger&uuml;stet.</td>
+</tr>
+<tr>
+<td>
+<h3>Pfeilschnell mit minimalistischem Design<strong><br /></strong></h3>
+Dank Surface Connect-Technologie erm&ouml;glicht das Surface Dock die blitzschnelle &Uuml;bertragung von Videos, Audio und anderen Daten &uuml;ber ein einzelnes Kabel und damit ohne Kabelsalat. &Uuml;ber den Gigabit-Ethernet-Anschluss k&ouml;nnen Sie zudem eine schnelle und zuverl&auml;ssige Netzwerkverbindung herstellen.<br /><br /></td>
+<td><img src="//img.notebooksbilliger.de/images/misc/dock2_feature_1x.png" alt="" width="292" height="179"  /></td>
+</tr>
+<tr>
+<td><strong><img src="//img.notebooksbilliger.de/images/misc/dock3-gray_feature_1x.png" alt="" width="296" height="181"  /></strong></td>
+<td>
+<h3>Komfortable Einrichtung</h3>
+Das Surface Dock ist Plug &amp; Play-f&auml;hig und somit im Handumdrehen eingerichtet. Schlie&szlig;en Sie einfach Ihre Peripherieger&auml;te an das Surface Dock an, und verbinden Sie anschlie&szlig;end das magnetische Surface Connect-Kabel mit Ihrem Ger&auml;t. Fertig.</td>
+</tr>
+</tbody>
+</table>
+<br /><br /><hr />
+<h3>Technische Daten</h3>
+<table>
+<tbody>
+<tr>
+<td><strong>Kompatibilit&auml;t</strong></td>
+<td>
+<ul>
+<li>Surface Laptop</li>
+<li>Surface Pro</li>
+<li>Surface Book</li>
+<li>Surface Pro 4</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td><strong>Abmessungen (L/B/H)</strong></td>
+<td>
+<ul>
+<li>13,0 cm x 6,0 cm x 3,0 cm</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td><strong>Gewicht</strong></td>
+<td>
+<ul>
+<li>550 g</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td><strong>Anschl&uuml;sse</strong></td>
+<td>
+<ul>
+<li>2 Mini-DisplayPort-Anschl&uuml;sse</li>
+<li>1 Gigabit-Ethernet-Anschluss</li>
+<li>4 USB 3.0-Anschl&uuml;sse</li>
+<li>1 Audioausgang</li>
+<li>Surface Connect-Kabel</li>
+<li>Externes Netzteil</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td><strong>Garantie</strong></td>
+<td>
+<ul>
+<li>2 Jahre Herstellergarantie</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+                                                    
+                
+            <div style="padding:20px 20px 10px;">
+                <iframe name="facebook_button2" id="facebook_button2" src="about:blank" scrolling="no" frameborder="0" style="border: none; overflow: hidden; width: 720px; height: 28px; display: none;">&nbsp;</iframe>
+            </div>
+            <script type="text/javascript">
+                var fburl2 = "//www.facebook.com/plugins/like.php?href=http://www.notebooksbilliger.de/products_id/238802/refcampaign_id/8025a04e05a35ce3118a7eeb057faa5c&amp;send=false&amp;layout=standard&amp;width=450&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=tahoma&amp;height=80&amp;appId=327002770683224&amp;ref=detail_middle";
+            </script>
+                <div style="margin: 5px 20px 20px; line-height: 16px; font-size: 11px;">
+                M&ouml;chten Sie mehr &uuml;ber Microsoft Surface Dock erfahren?<br/>
+                Lesen Sie die <a href="https://www.notebooksbilliger.de/produkt+bewertung/microsoft+surface+dock#navbar"
+                    data-wt="Bewertungen">Microsoft Surface Dock Bewertungen</a>!</div>
+                    </div>
+    </div>
+</div><div id="p_properties">
+    <a id="product_properties"></a>
+    
+<div class="pds_section" id="section_properties" data-section-id="properties" data-wt-section-name="technical data">
+    <div class="pds_section_title">
+        <i class="nbb-sprite-pds nbb-sprite-pds-title_specification"></i>
+        <h3 class="sr-only">Technische Daten</h3>
+    </div>
+    <div class="pds_toggle_content">
+        <table class="properties_table">
+                            <tr>
+                    <td colspan="1" class="group_header_wrapper produktDetails_eigenschaft1">
+                        <div class="group_header">Herstellernummer:</div>
+                    </td>
+                    <td colspan="2" class="group_header_wrapper">
+                        <div>PD9-00004</div>
+                    </td>
+                </tr>
+                                <tr>
+                    <td colspan="1" class="group_header_wrapper produktDetails_eigenschaft1">
+                        <div class="group_header">EAN-Nummer</div>
+                    </td>
+                    <td colspan="2" class="group_header_wrapper">
+                        <div>0885370996357</div>
+                    </td>
+                </tr>
+            
+    <tr>
+        <td colspan="3" class="group_header_wrapper produktDetails_eigenschaft1">
+            <div class="group_header">Dockingstation-Eigenschaften</div>
+        </td>
+    </tr>
+        <tr class="odd_line">
+                        <td width="190" class="produktDetails_eigenschaft2">Für</td>                    <td width="500" colspan="2" class="produktDetails_eigenschaft3"> Notebooks & Tablets </td>
+                                    </tr>
+                        <tr class="even_line">
+                        <td width="190" class="produktDetails_eigenschaft2">Passend für Modell</td>                    <td width="500" colspan="2" class="produktDetails_eigenschaft3"> Microsoft Surface Book/Book 2, Surface Pro 3 / Pro 4 / Pro, Surface Laptop </td>
+                                    </tr>
+                        <tr class="odd_line">
+                        <td width="190" class="produktDetails_eigenschaft2">Aufladefunktion</td>                    <td width="500" colspan="2" class="produktDetails_eigenschaft3"><i class="icon_yes">&nbsp;</i></td>
+                                    </tr>
+                        <tr class="even_line">
+                        <td width="190" class="produktDetails_eigenschaft2">Breite</td>                    <td width="500" colspan="2" class="produktDetails_eigenschaft3"> 130,00 cm </td>
+                                    </tr>
+                        <tr class="odd_line">
+                        <td width="190" class="produktDetails_eigenschaft2">Höhe</td>                    <td width="500" colspan="2" class="produktDetails_eigenschaft3"> 30,00 cm </td>
+                                    </tr>
+                        <tr class="even_line">
+                        <td width="190" class="produktDetails_eigenschaft2">Länge</td>                    <td width="500" colspan="2" class="produktDetails_eigenschaft3"> 60,00 cm </td>
+                                    </tr>
+                        <tr class="odd_line">
+                        <td width="190" class="produktDetails_eigenschaft2">Gewicht</td>                    <td width="500" colspan="2" class="produktDetails_eigenschaft3"> 550,00 g </td>
+                                    </tr>
+                
+    <tr>
+        <td colspan="3" class="group_header_wrapper produktDetails_eigenschaft1">
+            <div class="group_header">Garantie</div>
+        </td>
+    </tr>
+        <tr class="odd_line">
+                        <td width="190" class="produktDetails_eigenschaft2">Garantie</td>                    <td width="500" colspan="2" class="produktDetails_eigenschaft3"> 2 Jahre Herstellergarantie </td>
+                                    </tr>
+                        <tr class="even_line">
+                        <td width="190" class="produktDetails_eigenschaft2">Garantieart</td>                    <td width="500" colspan="2" class="produktDetails_eigenschaft3"> Bring-In Garantie </td>
+                                    </tr>
+                        </table>
+    </div>
+</div>
+</div>
+
+
+<div style="padding:0px;"></div>
+<div class="detail_site"><div class="pds_section" id="section_customerReviews" data-section-id="customerReviews" data-wt-section-name="customer rating">
+    <div class="pds_toggle_content_lazy">
+        <div class="upperHeight">
+            <span class="nbb-sprite-pds nbb-sprite-pds-title_user_rating">&nbsp;</span>
+            <h3 class="sr-only">Kundenbewertungen</h3>
+            <div class="customerReviews_top">
+                <div class="upper-row">
+                                            Durchschnittliche Kundenbewertung 3,5 / 5: <span
+                            class="stars_output"><span class="star-wrapper" title="Bewertung: 3.5 von 5">
+                       <span class="star-rating" style="width: 70%;"></span>
+                   </span> (9)</span>
+                                                    <div id="NBB-Review-Popover" class="nbb-popover bottom hide">
+                                <div class="arrow"></div>
+                                <div class="heading">Durchschnittliche Kundenbewertung 3,5 / 5:</div>
+                                <div class="cont">
+                                    <ul class="list-unstyled rating_overview_list">
+                                                                                    <li>
+                                        <span class="text dp-inbl">
+                                            5 Sterne                                        </span>
+                                        <span class="bg dp-inbl">
+                                            <span class="percentHolder dp-inbl">
+                                                33 %
+                                            </span>
+                                            <span class="bar dp-inbl" style="width: 33%"></span>
+                                        </span>
+                                        <span class="count dp-inbl">
+                                            3
+                                        </span>
+                                            </li>
+                                                                                    <li>
+                                        <span class="text dp-inbl">
+                                            4 Sterne                                        </span>
+                                        <span class="bg dp-inbl">
+                                            <span class="percentHolder dp-inbl">
+                                                44 %
+                                            </span>
+                                            <span class="bar dp-inbl" style="width: 44%"></span>
+                                        </span>
+                                        <span class="count dp-inbl">
+                                            4
+                                        </span>
+                                            </li>
+                                                                                    <li>
+                                        <span class="text dp-inbl">
+                                            3 Sterne                                        </span>
+                                        <span class="bg dp-inbl">
+                                            <span class="percentHolder dp-inbl">
+                                                0 %
+                                            </span>
+                                            <span class="bar dp-inbl" style="width: 0%"></span>
+                                        </span>
+                                        <span class="count dp-inbl">
+                                            0
+                                        </span>
+                                            </li>
+                                                                                    <li>
+                                        <span class="text dp-inbl">
+                                            2 Sterne                                        </span>
+                                        <span class="bg dp-inbl">
+                                            <span class="percentHolder dp-inbl">
+                                                0 %
+                                            </span>
+                                            <span class="bar dp-inbl" style="width: 0%"></span>
+                                        </span>
+                                        <span class="count dp-inbl">
+                                            0
+                                        </span>
+                                            </li>
+                                                                                    <li>
+                                        <span class="text dp-inbl">
+                                            1 Stern                                        </span>
+                                        <span class="bg dp-inbl">
+                                            <span class="percentHolder dp-inbl">
+                                                22 %
+                                            </span>
+                                            <span class="bar dp-inbl" style="width: 22%"></span>
+                                        </span>
+                                        <span class="count dp-inbl">
+                                            2
+                                        </span>
+                                            </li>
+                                                                            </ul>
+                                                                            <a href="https://www.notebooksbilliger.de/produkt+bewertung/zubehoer/microsoft+surface+dock"
+                                           title="Lies die Meinungen von anderen Benutzern zu diesem Produkt"
+                                           data-wt="Bewertungen lesen">
+                                            Alle Bewertungen ansehen (9)
+                                        </a>
+                                    
+                                </div>
+                            </div>
+                                                                                                                    <span class="pull-right">Teile deine Meinung zu diesem Produkt</span>
+                                                            </div>
+                <div class="lower-row">
+                                            Bewertungen:
+                                                    <span class="selection-active">f&uuml;r diese Serie</span>
+                                                /
+                                                    <a href="https://www.notebooksbilliger.de/produkt+bewertung/microsoft+surface+dock/reviews/product_only#section_customerReviews"
+                               class="selection-link">
+                                f&uuml;r diesen Artikel</a>
+                                            
+                                            <span class="pull-right">
+                        <a class="btn-nbb nbx-btn btn-base btn-writeReview" href="https://www.notebooksbilliger.de/produkt+bewertung/microsoft+surface+dock/reviews_type/review#navbar"
+                           data-wt="Bewertungen schreiben" data-product_id="238802">Bewertung schreiben <span
+                                    class="nbx-icon-arrow-right-s suf">&nbsp;</span></a>
+                    </span>
+                                    </div>
+            </div>
+        </div>
+        <div class="reviews_list" data-load-lazy="ajax.php?action=getReviewsList&products_id=238802&cPath=499">
+                    </div>
+                    <div class="text-center read_all_reviews">
+                <a href="https://www.notebooksbilliger.de/produkt+bewertung/zubehoer/microsoft+surface+dock#section_customerReviews"
+                   title="Lies die Meinungen von anderen Benutzern zu diesem Produkt"
+                   data-wt="Bewertungen lesen">
+                    Alle Bewertungen ansehen (9)
+                </a>
+            </div>
+            </div>
+            <script type="text/javascript">
+            jQuery(document).ready(function () {
+                jQuery('.write_comment').click(function () {
+                    displayReviewCommentPart(this);
+                });
+            });
+        </script>
+        <div class="review_box cap blind">
+            <div class="npost_content clearfix">
+                <div class="npost_label no_msg">
+                    Bitte beantworte die folgende Frage.
+                                    </div>
+                <script type="text/javascript">
+                    // recaptcha optionen
+                    var RecaptchaOptions = {
+                        theme: 'clean',
+                        lang: 'de'
+                    };
+                </script>
+                                    <script class="recaptchaScript" src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer ></script><script type="text/javascript">var onloadCallback = function() {jQuery("#Grecaptcha").empty();grecaptcha.render("Grecaptcha", {"sitekey" : "6LcsY9ISAAAAAA-k6CSpUN3fAz8mU7qLGVDivTIY"});};</script><div id="Grecaptcha" class="g-recaptcha" data-sitekey="6LcsY9ISAAAAAA-k6CSpUN3fAz8mU7qLGVDivTIY"></div><noscript><div style="width: 302px;"><div style="width: 302px; position: relative; background: #f9f9f9;"><div style="width: 302px; height: 422px; position: relative; z-index: 5"><iframe src="https://www.google.com/recaptcha/api/fallback?k=6LcsY9ISAAAAAA-k6CSpUN3fAz8mU7qLGVDivTIY" frameborder="0" scrolling="no" style="width: 302px; height:422px; border-style: none;"></iframe></div><div style="width: 300px; border-style: none; left: 0px; margin: 0px; padding: 0px; right: 25px; background: #f9f9f9; border: 1px solid #c1c1c1; border-radius: 0 0 3px 3px; position:relative; margin-top: -2px; z-index: 10"><textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid #c1c1c1; margin: 10px 25px; padding: 0px; resize: none;" ></textarea></div></div></div></noscript>
+                            </div>
+        </div>
+    </div>
+
+<script>
+
+</script></div><div class="pds_section" id="section_customerQuestions"
+     data-section-id="customerQuestions" data-wt-section-name="customer questions">
+    <div class="mb-40">
+        <div class="upper-row upperHeight">
+            <span class="nbb-sprite-pds nbb-sprite-pds-title_faq"></span>
+            <h3 class="sr-only">Fragen und Antworten</h3>
+                            <div class="pull-right">
+                    <span>Stell deine Frage in der Community.</span>
+                    <a href="https://www.notebooksbilliger.de/neuer+produkt+beitrag/type/thread/product_id/238802"
+                       class="btn-nbb nbx-btn btn-base"
+                       title="Eine Frage zu diesem Produkt stellen"
+                       data-wt="{'ct':'pdp.faq.ask question','ck': {'2':'faq.ask question'}}"
+                    >
+                        Frage stellen
+                        <span class="nbx-icon-arrow-right-s suf"></span>
+                    </a>
+                </div>
+                    </div>
+                    <div class="question_list">
+                                    <div class="question_block block collapsed">
+                        <div class="question_data">
+                            <span class="deko"></span>
+                            <div class="data">
+                                <div class="name">
+                                    Giuseppe L.
+                                </div>
+                                <div class="answers">
+                                    1
+                                                                            Antwort
+                                                                    </div>
+                            </div>
+                        </div>
+                        <div class="question_content">
+                            <h4>Anscließen eines Monitors über HDMI</h4>
+                            <div class="question break-text">
+                                Moin,
+
+laut meinem Verständnis kann ich hier nicht direkt einen Monitor anschließen richtig? ich benötige also ein weiteres HDMI/USB Kabel?
+
+für das Microsoft Surface Laptop ist das Dock geeignet oder?
+
+Gruß,
+Lucky
+                            </div>
+                            <div class="question_content_blur"></div>
+                        </div>
+                        <div class="question_link">
+                            <a href="/forum/Tablets/Sonstige/Ansclie%DFen+eines+Monitors+%FCber+HDMI"
+                               title="Zu den Antworten auf diese Frage"
+                               data-wt="{'ct':'pdp.faq.read more','ck': {'2':'faq.read more'}}">
+                                Weiter lesen <span class="arrow-right"></span>
+                            </a>
+                        </div>
+                    </div>
+                                    <div class="question_block block collapsed">
+                        <div class="question_data">
+                            <span class="deko"></span>
+                            <div class="data">
+                                <div class="name">
+                                    Gast
+                                </div>
+                                <div class="answers">
+                                    3
+                                                                            Antworten
+                                                                    </div>
+                            </div>
+                        </div>
+                        <div class="question_content">
+                            <h4>5K fähig?</h4>
+                            <div class="question break-text">
+                                Ich habe einen Dell UP2715k Monitor, der über zwei Display Port Ausgänge gleichzeitig versorgt weden muss.
+Ist es über das Dock möglich mit einem Surface Book 2 und der integrierten Geforce 1050 Karte die volle Auflösung zu fahren? (Mit den integrierten Intel Karten sollte das eigentlich nicht klappen)
+
+Beste Grüße, Stefan
+                            </div>
+                            <div class="question_content_blur"></div>
+                        </div>
+                        <div class="question_link">
+                            <a href="/forum/Tablets/Sonstige/5K+f%E4hig"
+                               title="Zu den Antworten auf diese Frage"
+                               data-wt="{'ct':'pdp.faq.read more','ck': {'2':'faq.read more'}}">
+                                Weiter lesen <span class="arrow-right"></span>
+                            </a>
+                        </div>
+                    </div>
+                                    <div class="question_block block collapsed">
+                        <div class="question_data">
+                            <span class="deko"></span>
+                            <div class="data">
+                                <div class="name">
+                                    Gast
+                                </div>
+                                <div class="answers">
+                                    1
+                                                                            Antwort
+                                                                    </div>
+                            </div>
+                        </div>
+                        <div class="question_content">
+                            <h4>Docking Station auch ohne Netzteil</h4>
+                            <div class="question break-text">
+                                Ist es möglich die Docking Station auch ohne Netzteil zu betreiben bzw. nur ein Displayport im Akkubetrieb (da leider mein Displayport verbogen ist).
+                            </div>
+                            <div class="question_content_blur"></div>
+                        </div>
+                        <div class="question_link">
+                            <a href="/forum/Tablets/Sonstige/Docking+Station+auch+ohne+Netzteil"
+                               title="Zu den Antworten auf diese Frage"
+                               data-wt="{'ct':'pdp.faq.read more','ck': {'2':'faq.read more'}}">
+                                Weiter lesen <span class="arrow-right"></span>
+                            </a>
+                        </div>
+                    </div>
+                                    <div class="question_block block collapsed">
+                        <div class="question_data">
+                            <span class="deko"></span>
+                            <div class="data">
+                                <div class="name">
+                                    Gast
+                                </div>
+                                <div class="answers">
+                                    8
+                                                                            Antworten
+                                                                    </div>
+                            </div>
+                        </div>
+                        <div class="question_content">
+                            <h4>2 Monitore anschließen</h4>
+                            <div class="question break-text">
+                                Hallo,
+
+ich habe gehört, wenn ich über die Dockingstation 2 externe Monitore anschließe dann bleibt der Bildschirm des Surface schwarz. Wie kann das den sein? Ich brauche den 3ten Bildschirm (Surface) auch noch. Gibts hier Möglichkeiten?
+                            </div>
+                            <div class="question_content_blur"></div>
+                        </div>
+                        <div class="question_link">
+                            <a href="/forum/Tablets/Sonstige/2+Monitore+anschlie%DFen"
+                               title="Zu den Antworten auf diese Frage"
+                               data-wt="{'ct':'pdp.faq.read more','ck': {'2':'faq.read more'}}">
+                                Weiter lesen <span class="arrow-right"></span>
+                            </a>
+                        </div>
+                    </div>
+                                    <div class="question_block block collapsed">
+                        <div class="question_data">
+                            <span class="deko"></span>
+                            <div class="data">
+                                <div class="name">
+                                    Gast
+                                </div>
+                                <div class="answers">
+                                    1
+                                                                            Antwort
+                                                                    </div>
+                            </div>
+                        </div>
+                        <div class="question_content">
+                            <h4>USB-Ports zum Laden</h4>
+                            <div class="question break-text">
+                                Kann man auch während kein Surface angeschlossen ist zB ein Smartphone an den USB Ports laden?
+                            </div>
+                            <div class="question_content_blur"></div>
+                        </div>
+                        <div class="question_link">
+                            <a href="/forum/Tablets/Sonstige/USB-Ports+zum+Laden"
+                               title="Zu den Antworten auf diese Frage"
+                               data-wt="{'ct':'pdp.faq.read more','ck': {'2':'faq.read more'}}">
+                                Weiter lesen <span class="arrow-right"></span>
+                            </a>
+                        </div>
+                    </div>
+                                    <div class="question_block block collapsed">
+                        <div class="question_data">
+                            <span class="deko"></span>
+                            <div class="data">
+                                <div class="name">
+                                    Gast
+                                </div>
+                                <div class="answers">
+                                    3
+                                                                            Antworten
+                                                                    </div>
+                            </div>
+                        </div>
+                        <div class="question_content">
+                            <h4>Surface Dock Netzteil</h4>
+                            <div class="question break-text">
+                                Ist im Lieferumfang ein Netzteil dabei ?
+                            </div>
+                            <div class="question_content_blur"></div>
+                        </div>
+                        <div class="question_link">
+                            <a href="/forum/Tablets/Sonstige/Surface+Dock+Netzteil"
+                               title="Zu den Antworten auf diese Frage"
+                               data-wt="{'ct':'pdp.faq.read more','ck': {'2':'faq.read more'}}">
+                                Weiter lesen <span class="arrow-right"></span>
+                            </a>
+                        </div>
+                    </div>
+                                    <div class="question_block block collapsed">
+                        <div class="question_data">
+                            <span class="deko"></span>
+                            <div class="data">
+                                <div class="name">
+                                    Gast
+                                </div>
+                                <div class="answers">
+                                    0
+                                                                            Antworten
+                                                                    </div>
+                            </div>
+                        </div>
+                        <div class="question_content">
+                            <h4>Adapter DVI</h4>
+                            <div class="question break-text">
+                                Welches sind die idealen Adapter um DVI Anschlüsse zu realisieren ?
+                            </div>
+                            <div class="question_content_blur"></div>
+                        </div>
+                        <div class="question_link">
+                            <a href="/forum/Tablets/Sonstige/Adapter+DVI"
+                               title="Zu den Antworten auf diese Frage"
+                               data-wt="{'ct':'pdp.faq.read more','ck': {'2':'faq.read more'}}">
+                                Weiter lesen <span class="arrow-right"></span>
+                            </a>
+                        </div>
+                    </div>
+                            </div>
+        
+            </div>
+</div><!-- HookLogic Retail Search product ad module 1 -->
+<div id="section_hl_highlight_slider" class="clearfix horizontal_product_slider hl_highlight_slider">
+    <div class="hl_section_content">
+        <i class="nbb-sprite-pds nbb-sprite-pds-title_interests va-mid"></i>
+        <h3 class="sr-only">Das k&ouml;nnte dich auch interessieren</h3>
+        <div class="section_product_slider_horizontal">
+            <div id="hl_1" data-cpath="499"></div>
+        </div>
+    </div>
+    <div class="hl_loader"><img alt="Bitte warten" src="/gfx/loader_20090428.gif"/></div>
+</div>    <div id="section_last_viewed_products" class="clearfix horizontal_product_slider last_viewed_products">
+        <i class="nbb-sprite-pds nbb-sprite-pds-title_last_seen va-mid"></i>
+        <h3 class="sr-only">Zuletzt angesehene Produkte</h3>
+        <div class="pull-left slider_control_left">
+            <i class="nbx-sprite">&nbsp;</i>
+        </div>
+        <div class="pull-left product_slider_list_container">
+            <ul class="list-unstyled section_product_slider_horizontal">
+                <li><a href="https://www.notebooksbilliger.de/max+cube+starterset" title="MAX! Cube Starterset (1x Gateway, 2x Heizk&ouml;rperthermostat)"><span class="imgWrap"><img src="//media.nbb-cdn.de/images/products/240000/248016/160_small_MAX-set-1.jpg?size=160" alt="MAX! Cube Starterset (1x Gateway, 2x Heizk&amp;ouml;rperthermostat)" /></span><span class="txtWrap"><span class="name">MAX! Cube Starterset</span><span class="price"><span class="rerenderFontSvg"><svg class="nbb_price_44 rerenderFont" width="100%"><g class="nbb_price_44"><text dx=".07em" y=".82em" class="nbb-svg-shadow">69,98<tspan class="nbb-currency">&nbsp;Euro</tspan></text><text dx=".05em" y=".8em" class="nbb-svg-outline">69,98<tspan class="nbb-currency">&nbsp;Euro</tspan></text><text dx=".05em" y=".8em" class="nbb-svg-base">69,98<tspan class="nbb-currency">&nbsp;Euro</tspan></text></g></svg></span><span class="rerenderFontDefault" data-price="69.98"><span class="p_price_full dp-inbl">69,98</span><span class="nbb-currency dp-inbl"> Euro</span></span></span></span></a></li><li><a href="https://www.notebooksbilliger.de/lenovo+thinkpad+p51" title="Lenovo ThinkPad P51 15.6\&quot; FHD IPS, i7-7820HQ vPro, 16GB, 512GB SSD, M2200M, WWAN Ready, Win10Pro"><span class="imgWrap"><img src="//media.nbb-cdn.de/images/products/300000/309175/160_small_P51_1_squrd.jpg?size=160" alt="Lenovo ThinkPad P51 15.6\&amp;quot; FHD IPS, i7-7820HQ vPro, 16GB, 512GB SSD, M2200M, WWAN Ready, Win10Pro" /></span><span class="txtWrap"><span class="name">Lenovo ThinkPad P51</span><span class="price"><span class="rerenderFontSvg"><svg class="nbb_price_44 rerenderFont" width="100%"><g class="nbb_price_44"><text dx=".07em" y=".82em" class="nbb-svg-shadow">2.938,95<tspan class="nbb-currency">&nbsp;Euro</tspan></text><text dx=".05em" y=".8em" class="nbb-svg-outline">2.938,95<tspan class="nbb-currency">&nbsp;Euro</tspan></text><text dx=".05em" y=".8em" class="nbb-svg-base">2.938,95<tspan class="nbb-currency">&nbsp;Euro</tspan></text></g></svg></span><span class="rerenderFontDefault" data-price="2938.95"><span class="p_price_full dp-inbl">2.938,95</span><span class="nbb-currency dp-inbl"> Euro</span></span></span></span></a></li><li><a href="https://www.notebooksbilliger.de/apple+129+ipad+pro+2017+64gb+wi+fi+cellular+silber" title="Apple 12,9\&quot; iPad Pro 2017 64GB Wi-Fi + Cellular, Silber "><span class="imgWrap"><img src="//media.nbb-cdn.de/images/products/310000/316134/160_small_Apple_iPadPro_2017_silber_Hero.jpg?size=160" alt="Apple 12,9\&amp;quot; iPad Pro 2017 64GB Wi-Fi + Cellular, Silber " /></span><span class="txtWrap"><span class="name">Apple 12,9\&quot; iPad Pro 2017 64GB Wi-Fi + Cellular, Silber</span><span class="price"><span class="rerenderFontSvg"><svg class="nbb_price_44 rerenderFont" width="100%"><g class="nbb_price_44"><text dx=".07em" y=".82em" class="nbb-svg-shadow">989,00<tspan class="nbb-currency">&nbsp;Euro</tspan></text><text dx=".05em" y=".8em" class="nbb-svg-outline">989,00<tspan class="nbb-currency">&nbsp;Euro</tspan></text><text dx=".05em" y=".8em" class="nbb-svg-base">989,00<tspan class="nbb-currency">&nbsp;Euro</tspan></text></g></svg></span><span class="rerenderFontDefault" data-price="989"><span class="p_price_full dp-inbl">989,00</span><span class="nbb-currency dp-inbl"> Euro</span></span></span></span></a></li><li><a href="https://www.notebooksbilliger.de/toshiba+tecra+z40+c+130+notebook" title="Toshiba Tecra Z40-C-130 Notebook 14&quot; Full HD IPS, Intel Core i5-6300U vPro, 8GB, 256GB SSD, Win10 Pro"><span class="imgWrap"><img src="//media.nbb-cdn.de/images/products/290000/297444/160_small_Tecra_Z40-C_Win10_01.jpg?size=160" alt="Toshiba Tecra Z40-C-130 Notebook 14&amp;quot; Full HD IPS, Intel Core i5-6300U vPro, 8GB, 256GB SSD, Win10 Pro" /></span><span class="txtWrap"><span class="name">Toshiba Tecra Z40-C-130 Notebook</span><span class="price"><span class="rerenderFontSvg"><svg class="nbb_price_44 rerenderFont" width="100%"><g class="nbb_price_44"><text dx=".07em" y=".82em" class="nbb-svg-shadow">1.599,00<tspan class="nbb-currency">&nbsp;Euro</tspan></text><text dx=".05em" y=".8em" class="nbb-svg-outline">1.599,00<tspan class="nbb-currency">&nbsp;Euro</tspan></text><text dx=".05em" y=".8em" class="nbb-svg-base">1.599,00<tspan class="nbb-currency">&nbsp;Euro</tspan></text></g></svg></span><span class="rerenderFontDefault" data-price="1599"><span class="p_price_full dp-inbl">1.599,00</span><span class="nbb-currency dp-inbl"> Euro</span></span></span></span></a></li>            </ul>
+        </div>
+        <div class="pull-left slider_control_right">
+            <i class="nbx-sprite">&nbsp;</i>
+        </div>
+    </div>
+        <script>
+        jQuery(function () {
+            truncateText('#section_last_viewed_products .name', 50);
+            var fontGenerator = new NbbFontGenerator(isSvgAvailable, agent);
+            fontGenerator.centerSvgPrices();
+        });
+    </script>
+</div>
+    </div>
+    <a href="#page-main"
+       id="BackToTop"
+       class="nbb-sprite-pds nbb-sprite-pds-back_to_top"
+       title="zur&uuml;ck nach oben">
+        <span class="sr-only">zur&uuml;ck nach oben</span>
+    </a>
+
+<script type="text/javascript">
+    jQuery('form[name=cart_quantity]').on('submit', function (e) {
+        var id = 238802;
+        var price = jQuery('#product_price_detail').text().replace('Euro', '').trim().replace('.', '').replace(',', '.');
+        trackConversionEvent(id, price, 'AddToCart', 'ShoppingCartLayer');
+    });
+    jQuery('.textlink-notepad').on('click', function(e) {
+        var id = jQuery(this).data('products-id');
+        var price = jQuery(this).closest('.box_product_info').prevAll('.content_price').find('#product_price_detail')
+            .text().replace('Euro', '').trim().replace('.', '').replace(',', '.');
+        trackConversionEvent(id, price, 'AddToWishlist', 'AddToWishlistLayer');
+    });
+    function trackConversionEvent(id, price, event, content_name) {
+        id = typeof id !== 'undefined' ? id : 'default_id';
+        price = typeof price !== 'undefined' ? price : 'default_price';
+        event = typeof event !== 'undefined' ? event : 'default_event';
+        content_name = typeof content_name !== 'undefined' ? content_name : 'default_content_name';
+
+        var parameterObject = {
+            'content_ids': ['' + id + ''],
+            'content_type': 'product',
+            'content_name': content_name,
+            'value': "'" + price  + "'",
+            'currency': 'EURO'
+        };
+
+        if(content_name === "AddToWishlistLayer") {
+            parameterObject['content_category'] = "Wishlist";
+        }
+
+        if (typeof facebookInit !== "undefined" && facebookInit !== null) {
+            fbq('track', event, parameterObject);
+        }
+    }
+    function addProducts() {
+
+        var countAccessories = 0;
+        var i = 0;
+        var arrayElements = 0;
+        var attribute = 0;
+        var product;
+        while (i != countAccessories) {
+            attribute = i + 1;
+
+            element = document.getElementById('attribute_' + attribute);
+            value = element.value;
+
+            if (value >= 1) {
+                arrayElements++;
+            }
+            i = attribute;
+        }
+
+        if (arrayElements > 0) {
+            var track = new Array(arrayElements);
+            var trackElement;
+
+            i = 0;
+            attribute = 0;
+            var arrayElement = 0;
+            while (i != countAccessories) {
+                attribute = i + 1;
+
+                element = document.getElementById('attribute_' + attribute);
+                value = element.value;
+
+                if (value >= 1) {
+                    trackElement = document.getElementById('track' + value).value;
+                    track[arrayElement] = JSON.parse(trackElement);
+                    arrayElement = arrayElement + 1;
+                }
+                i = attribute;
+            }
+
+
+            product = {
+                'products_id': '238802',
+                'category': '499',
+                'manufacturer': '28',
+                'products_price': '151.2521',
+                'accessories': track
+            };
+
+            setProductCountItem();
+            setProductItem(JSON.stringify(product));
+        }
+    }
+    // just temporary until new reviews design is implemented on SEO reviews page
+
+    function show_old(state, id) {
+        if (jQuery('#section_customerReviews.pds_section').length === 0) {
+            var element = jQuery('#voting_' + state + '_for_' + id);
+            if (element.text().trim() === "0") {
+                var count = 0;
+                element.removeClass('rating-count-0').addClass('rating-count-1');
+            } else {
+                var count = parseInt(element.text());
+            }
+
+            count = count + 1;
+
+            element.text(count);
+
+            jQuery.getJSON('ajax.php', {
+                action: 'saveToSession',
+                productRating: 'true',
+                key: 'voting_' + state + '_for_' + id,
+                value: count
+            }).done(function (data) {
+                element.closest('button').addClass('voted').blur().siblings('.reviews-rating-vote').addClass('invisible');
+            });
+        }
+    }
+
+    jQuery(document).ready(function () {
+        jQuery('button[name="vote_yes"]').click(function () {
+            el = jQuery(this);
+            var id = el.data('id');
+            if (el.hasClass('voted')) {
+                jQuery('#error_' + id).show();
+                return false;
+            }
+
+            var check = "";
+
+            jQuery.getJSON('ajax.php', {
+                action: 'getFromSession',
+                productRating: 'true',
+                key: 'voting_yes_for_' + id
+            }).done(function (data) {
+                check = data;
+                if (check === "") {
+                    jQuery.ajax({
+                        url: 'product_review.php?id=' + id + '&state=yes'
+                    }).done(function () {
+                        show_old('yes', id);
+                    });
+                } else {
+                    jQuery('#error_' + id).show();
+                    el.addClass('voted').blur().siblings('.reviews-rating-vote').addClass('voted');
+                }
+            });
+        });
+        jQuery('button[name="vote_no"]').click(function () {
+            el = jQuery(this);
+            var id = el.data('id');
+            if (el.hasClass('voted')) {
+                jQuery('#error_' + id).show();
+                return false;
+            }
+
+            var check = "";
+            jQuery.getJSON('ajax.php', {
+                action: 'getFromSession',
+                productRating: 'true',
+                key: 'voting_no_for_' + id
+            }).done(function (data) {
+                check = data;
+                if (check === "") {
+                    jQuery.ajax({
+                        url: 'product_review.php?id=' + id + '&state=no'
+                    }).done(function () {
+                        show_old('no', id);
+                    });
+                } else {
+                    jQuery('#error_' + id).show();
+                    el.addClass('voted').blur().siblings('.reviews-rating-vote').addClass('voted');
+                }
+            });
+
+        });
+
+
+    });
+</script>
+    <script type="text/javascript">
+        epoq_sessionId = '4l0ioqar1k23gst0uqtdcv1atmt6928dat4rnve3io7l9mvu9b4hvu9v8qddqnkgjm67u5roub6r660gm6gtcp6lmvg0uqchrcubie2';
+        jQuery(document).ready(function () {
+            epoq_tenantId = 'notebooksbilliger';
+            epoq_customerId = 'NULL';
+            epoq_productId = '238802';
+            if (typeof epoq_viewItem === "function") {
+                epoq_viewItem();
+            }
+        });
+    </script>
+                </div>
+                <div style="clear: left;"></div>
+                    <div id="main_footer" class="footer">
+            <div class="footerbox" style="width: 782px;">
+                <div class="head" style="width: 782px;">
+                    <div class="footerbox_headline" style="width: 216px">
+                        Testsieger im Deutschlandtest
+                    </div>
+                    <div class="footerbox_headline" style="width: 229px">
+                        Schneller Versand
+                    </div>
+                    <div class="footerbox_headline" style="width: 257px; margin-right: 0px;">
+                        Flexible Zahlung
+                    </div>
+                </div>
+                <div class="body clearfix" style="width: 784px;">
+                    <div class="footerbox_body" style="padding-left: 5px; padding-top:4px; width: 241px;">
+                        <a href="https://www.notebooksbilliger.de/infocenter/section/aboutus"
+                           class="doha_award"
+                           title="Onlineshops für Technik im Deutschlandtest - notebooksbilliger.de ist Sieger im Bereich Kundenzufriedenheit">
+                            <img src="gfx/footer/onlineshop_testsieger_2016.png"
+                                 class="footer_grid_image"
+                                 alt="Onlineshops für Technik im Deutschlandtest - notebooksbilliger.de ist Sieger im Bereich Kundenzufriedenheit" />
+                        </a>
+                    </div>
+                    <div class="footerbox_body" style="width: 250px" id="wtxy-fast_delivery">
+                        <span style="margin-left: 8px;">Wir versenden &uuml;berwiegend mit:</span>
+                        <a href="https://www.myhermes.de/wps/portal/paket/Home/privatkunden/home" target="_blank" data-wt="Info Hermes Versand">
+                            <img src="gfx/footer/logo_hermes.png" style="float: left; margin-top: 35px;margin-left: 13px;" alt="Hermes">
+                        </a>
+                        <a href="http://www.ups.com/de" target="_blank" data-wt="Info UPS Versand">
+                            <img src="gfx/footer/logo_ups.png" style="float: right; margin-top: 15px; margin-right: 35px;" alt="UPS">
+                        </a>
+                    </div>
+                    <div class="footerbox_body" style="width: 200px; margin-right: 0px;" id="wtxy-flex_payment">
+                        <img src="gfx/footer/payment_options_2017-08-25.png"
+                             alt="Bezahlm&ouml;glichkeiten"
+                             class="footer_grid_image"
+                             usemap="#payOptions" />
+                        <map name="payOptions">
+                            <area shape="rect"
+                                  coords="1,1,80,50"
+                                  href="https://www.notebooksbilliger.de/infocenter/section/masterpass"
+                                  data-wt=""
+                                  title="MasterPass"
+                                  alt="MasterPass"/>
+                            <area shape="rect"
+                                  coords="85,1,230,50"
+                                  href="https://www.notebooksbilliger.de/infocenter/section/pay_kreditkarte"
+                                  data-wt=""
+                                  title="Kreditkarte"
+                                  alt="Kreditkarte"/>
+                            <area shape="rect"
+                                  coords="1,55,110,90"
+                                  href="https://www.notebooksbilliger.de/infocenter/section/pay_paypal"
+                                  data-wt=""
+                                  title="Paypal"
+                                  alt="Paypal"/>
+                            <area shape="rect"
+                                  coords="120,55,230,90"
+                                  href="https://www.notebooksbilliger.de/infocenter/section/pay_sofortueberweisung"
+                                  data-wt=""
+                                  title="Sofort&uuml;berweisung"
+                                  alt="Sofort&uuml;berweisung"/>
+                            <area shape="rect"
+                                  coords="1,92,90,110"
+                                  href="https://www.notebooksbilliger.de/infocenter/section/pay_cod"
+                                  data-wt=""
+                                  title="Nachnahme"
+                                  alt="Nachnahme"/>
+                            <area shape="rect"
+                                  coords="1,110,90,130"
+                                  href="https://www.notebooksbilliger.de/infocenter/section/pay_prepayment"
+                                  data-wt=""
+                                  title="Vorkasse"
+                                  alt="Vorkasse"/>
+                            <area shape="rect"
+                                  coords="90,92,230,130"
+                                  href="https://www.notebooksbilliger.de/infocenter/section/pay_finanzierung"
+                                  data-wt=""
+                                  title="Finanzierung"
+                                  alt="Finanzierung"/>
+                        </map>
+                    </div>
+                </div>
+            </div>
+            <div class="footerbox" style="width: 782px;">
+                <div class="head">
+                    <div class="footerbox_headline">
+                        Meine Daten
+                    </div>
+                    <div class="footerbox_headline">
+                        Unternehmen
+                    </div>
+                    <div class="footerbox_headline">
+                        Service
+                    </div>
+                    <div class="footerbox_headline">
+                        Bestellung
+                    </div>
+                    <div class="footerbox_headline last" style="margin-right: 0px;">
+                        mobil informiert
+                    </div>
+                </div>
+                <div class="body clearfix" style="width: 782px;">
+                    <div class="footerbox_body" id="wtxy-myData">
+                        <!--Meine Daten-->
+                        <a href="https://www.notebooksbilliger.de/zubehoer/microsoft+surface+dock/action/login" onclick="showLogin();return false;" rel="nofollow">Anmelden</a><br/>
+                        <a href="https://www.notebooksbilliger.de/warenkorb"
+                           rel="nofollow">Warenkorb</a><br/>
+                        <a href="https://www.notebooksbilliger.de/kasse/anmelden"
+                           rel="nofollow">Kasse</a><br/>
+                        <a href="https://www.notebooksbilliger.de/merkzettel" rel="nofollow">Merkzettel</a><br/>
+                        <a href="https://www.notebooksbilliger.de/infocenter/section/privacy" rel="nofollow">Datenschutz</a><br/>
+                    </div>
+                    <div class="footerbox_body" id="wtxy-company">
+                        <!--Unternehmen-->
+                        <a href="https://www.notebooksbilliger.de/infocenter/section/aboutus" rel="nofollow" data-wt="Über uns">&Uuml;ber
+                            Uns</a><br/>
+                        <a href="https://www.notebooksbilliger.de/partnerprogramm" rel="nofollow">Partnerprogramm</a><br/>
+                        <a href="https://www.notebooksbilliger.de/infocenter/section/impressum" rel="nofollow">Impressum</a><br/>
+                        <a href="https://www.notebooksbilliger.de/infocenter/section/conditions"
+                           rel="nofollow">AGB</a> / <a href="https://www.notebooksbilliger.de/infocenter/section/conditions#revocation"
+                           rel="nofollow">Widerrufsrecht</a><br/>
+                        <a href="https://www.notebooksbilliger.de/jobs" rel="nofollow">Karriere / Jobs</a><br/>
+                    </div>
+                    <div class="footerbox_body" id="wtxy-service">
+                        <!--Service-->
+                        <a href="https://support.notebooksbilliger.de/hc/de/" rel="nofollow" target="_blank" title="Zum notebooksbilliger.de Helpcenter">FAQ / Hilfe</a><br/>
+                        <a href="https://www.notebooksbilliger.de/presse" rel="nofollow">Pressecenter</a><br/>
+                        <a href="https://www.notebooksbilliger.de/produktberater" rel="nofollow">Produktberater</a><br/>
+                        <a href="https://www.notebooksbilliger.de/studentenprogramm" rel="nofollow">Studentenprogramm</a><br/>
+                    </div>
+                    <div class="footerbox_body" id="wtxy-order">
+                        <!--Bestellung-->
+                        <a href="https://www.notebooksbilliger.de/infocenter/section/shipping" rel="nofollow">Versandkosten</a><br/>
+                        <a href="https://support.notebooksbilliger.de/hc/de/articles/211367509" rel="nofollow">Lieferzeiten</a><br/>
+                        <a href="https://support.notebooksbilliger.de/hc/de/articles/212473285" rel="nofollow" target="_blank">24h Express</a><br/>
+                        <a href="https://www.notebooksbilliger.de/infocenter/section/store/city/sarstedt"
+                           rel="nofollow">Ladengesch&auml;fte</a><br/>
+                        <a href="https://www.notebooksbilliger.de/infocenter/section/pay_finanzierung"
+                           rel="nofollow">Ratenzahlung</a><br/>
+                    </div>
+                    <div class="footerbox_body" style="margin-right: 0px; width: 135px;padding-left: 15px;" id="wtxy-mobile_informed">
+                        <!--mobil informiert-->
+                        <a href="https://www.notebooksbilliger.de/newsletter" rel="nofollow" class="footerNewsletter footerSprite"></a>
+                        <br/>
+                        <a href="https://play.google.com/store/apps/details?id=com.nbb.app&hl=de"
+                           rel="nofollow">Android App</a><br/>
+                        <a href="http://itunes.apple.com/de/app/nbb/id481326696?mt=8&partnerId=2003"
+                           rel="nofollow">iOS App</a>
+                    </div>
+                    <br style="clear:left;"/>
+                </div>
+            </div>
+            <div class="pricenotice" id="wtxy-price_notice">
+            Alle Preisangaben sind in Euro inkl. MwSt. und zzgl.
+            <a href="https://www.notebooksbilliger.de/infocenter/versandkosten" target="_blank" rel="nofollow">Versandkosten</a>
+            ab 7,99 Euro innerhalb Deutschlands.
+            <a href="https://www.notebooksbilliger.de/infocenter/versandkosten" target="_blank" rel="nofollow">Versand</a>
+            von Gro&szlig;ger&auml;ten und TV-Ger&auml;ten ab 122 cm (48") bis zur Verwendungsstelle ab
+            39,99 Euro innerhalb Deutschlands. Die Versandkosten richten
+            sich nach Versandart, Gr&ouml;&szlig;e und Logistikdienstleister. Gro&szlig;mengenabgaben vorbehalten.
+            Produktbilder und Angaben zu technischen Produkteigenschaften ohne Gew&auml;hr.<br />
+                            <br />
+                <sup>*</sup>Bei versandkostenfreien/frachtfreien Artikeln ist der Versand innerhalb Deutschlands mit Hermes bei Zahlung per Vorkasse f&uuml;r Sie kostenfrei.
+                <br/>
+                        
+        </div>
+                    <p class="pricenotice">
+                1) Repr&auml;sentatives Beispiel: Nettokreditbetrag 1.000 &euro;, 0% eff. Jahreszins, 0% Sollzinssatz
+                p.a. gebunden, 12 Monate Laufzeit, mtl. Rate 83,33 Euro, Gesamtfinanzierungsbetrag 1.000 Euro,
+                Rechenbeispiel entspricht dem repr&auml;sentativen Beispiel nach § 6a PangV.
+                Berechnung ohne Kreditversicherung. Es handelt sich hierbei um ein repr&auml;sentatives Beispiel.
+                Die monatliche Rate für Ihre Bestellung ist abh&auml;ngig von der gew&auml;hlten Laufzeit und dem Warenwert
+                und wird Ihnen auf den Artikelseiten, im Warenkorb und an der Kasse angezeigt. Voraussetzungen für die 0%
+                Finanzierung sind der Abschluss eines entsprechenden Darlehensvertrages zwischen dem Kunden
+                und der BNP Paribas S.A. Niederlassung Deutschland, Schwanthalerstr. 31, 80336 München.
+                Weitere Informationen entnehmen Sie bitte den Vertragsbedingungen Ihres Kreditvertrages. Weitere
+                Laufzeiten <a href="https://www.notebooksbilliger.de/infocenter/section/pay_finanzierung">m&ouml;glich</a>
+            </p>
+                <p class="footercopyright">
+            <strong>Copyright  2002-2018 notebooksbilliger.de AG.</strong> Alle Rechte vorbehalten.<br/>
+        </p>
+        <div class="pricenotice">
+            Ultrabook, Celeron, Celeron Inside, Core Inside, Intel, Intel Logo, Intel Atom, Intel Atom Inside, Intel Core, Intel Inside, Intel Inside Logo, Intel vPro, Itanium, Itanium Inside, Pentium, Pentium Inside, vPro Inside, Xeon, Xeon Phi, und Xeon Inside sind Marken der Intel Corporation in den USA und anderen L&auml;ndern.
+        </div>
+       </div>
+                </div>
+        </div>
+        <!-- skyscraper -->
+                            <div class="skyscraper">
+                        <div id='wideSkyBanner' class="wideSkyBanner_sticky">
+                            <script type='text/javascript'>
+                                if (typeof googletag !== 'undefined') {
+                                    googletag.cmd.push(function() {
+                                        googletag.display('wideSkyBanner');
+                                    });
+                                }
+                            </script>
+                        </div>
+                    </div>
+                        </div>
+    <div class="zx_10570A0C467923298535 zx_mediaslot">
+                    <script type="text/javascript">
+                        window._zx = window._zx || [];
+                        window._zx.push({"id":"10570A0C467923298535"});
+                        (function(d) {
+                            var s = d.createElement("script"); s.async = true;
+                            s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//static.zanox.com/scripts/zanox.js";
+                            var a = d.getElementsByTagName("script")[0]; a.parentNode.insertBefore(s, a);
+                        }(document));
+                    </script>
+                </div>
+<script type="text/javascript">
+var zx_identifier = 'A 594524';
+var zx_fn = 'Microsoft Surface Dock - für Surface Pro 4, Surface Book und Surface Pro 3';
+var zx_category = 'Dockingstation';
+var zx_brand = 'Microsoft';
+var zx_price = '151,25 EUR';
+var zx_amount = '151.25';
+var zx_currency = 'EUR';
+var zx_url = 'https://www.notebooksbilliger.de/microsoft+surface+dock';
+var zx_photo = 'http://media.nbb-cdn.de/images/products/230000/238802/smallsurface_dock_1.jpg?size=120';
+</script>    <script type="text/javascript">
+        window.___gcfg = {
+            lang: 'de'
+        };
+
+        (function() {
+            var po   = document.createElement('script');
+            po.type  = 'text/javascript';
+            po.async = true;
+            po.src   = 'https://apis.google.com/js/plusone.js';
+            var s    = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(po, s);
+        })();
+    </script>
+    <!-- w3 -->
+    <script type="text/javascript">
+    jQuery(document).ready(function() {
+        try {
+            var cAutoListener = new AutoListener();
+        } catch(e) {}
+        if (typeof cAutoListener !== 'undefined') {
+            cAutoListener.listen();
+        }
+    });
+</script>
+<style>
+    #cookieNotice {
+        background-color: #f6f6f6;
+        margin-top: -3px;
+        margin-bottom: 3px;
+        line-height: 15px;
+        height: 32px;
+    }
+    #noticeInner {
+        font-size: 11px;
+        color: #838383;
+        margin: 0 auto;
+        padding:7px 0;
+        width: 940px;
+    }
+    #cookieNoticeCloser {
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: bold;
+        text-decoration: none;
+        margin-left:5px;
+    }
+    #cookieNoticeText {
+        padding:7px 0;
+        font-family: "Roboto-Regular";
+
+    }
+</style>
+
+<div id="cookieNotice">
+    <div id="noticeInner">
+        <span id="cookieNoticeText">
+              <i>notebooksbilliger.de</i> verwendet
+              <a href="https://www.notebooksbilliger.de/infocenter/section/privacy">Cookies</a>
+              , um Ihnen das bestm&ouml;gliche Shopping-Erlebnis zu bieten. Wenn Sie auf der Seite weitersurfen, stimmen Sie der
+              <a href="https://www.notebooksbilliger.de/infocenter/section/privacy">Cookie-Nutzung</a> zu.
+        </span>
+        <span id="cookieNoticeCloser" onclick="hideCookieNotice();">x
+        </span>
+    </div>
+</div>
+
+<script>
+    function hideCookieNotice() {
+        jQuery('#cookieNotice').slideUp();
+    }
+    
+    if (document.cookie.indexOf('hide1CookieNotice=1') != -1) {
+        jQuery('#cookieNotice').hide();
+    } else {
+        jQuery('#cookieNotice').prependTo('body');
+        refreshCookieForCookieNotice();
+    }
+
+    function refreshCookieForCookieNotice() {
+        var now = new Date();
+        var time = now.getTime();
+        var expireTime = time + 1000*60*60*24*365;
+        now.setTime(expireTime);
+        document.cookie = 'hide1CookieNotice=1;expires=' + now.toUTCString()+ 'path=/;';
+    }
+</script>
+    <script type="text/javascript" defer language="javascript" src="https://www.notebooksbilliger.de/includes/javascript/dist/pdp.min_2651459802267145319.js?tracker=null"></script>
+    <script type="text/javascript">dataLayer.push({"pageType":"product"}); dataLayer.push({"hlpt":"P"}); dataLayer.push({"categories":["Zubeh\u00f6r & Kabel"]}); dataLayer.push({"breadcrumb":"Zubeh\u00f6r & Kabel"}); dataLayer.push({"hlTaxonomy":"499"}); dataLayer.push({"productId":238802}); dataLayer.push({"productBrand":"Microsoft"}); dataLayer.push({"productName":"Microsoft Surface Dock - f\u00fcr Surface Pro 4, Surface Book und Surface Pro 3"}); dataLayer.push({"productPrice":179.99}); dataLayer.push({"currency":"EUR"}); dataLayer.push({"productOriginalPrice":179.99}); dataLayer.push({"inStock":0}); dataLayer.push({'event' : 'productPageView'});</script><script type="text/javascript">
+    function dyAddToCart(price, productSKU) {
+        DY.API('event', {
+            name: 'Add to Cart',
+            properties: {
+                dyType: 'add-to-cart-v1',
+                value: price,
+                currency: 'EUR',
+                productId: productSKU.replace(' ', ''),
+                quantity: 1
+            }
+        });
+    }
+
+    jQuery(document).ready(function () {
+                var mainProductSKU = jQuery('#product_page_detail').data('productsNumber');
+        var mainProductPrice = jQuery('#product_detail_price').attr('content');
+        jQuery('form[name=cart_quantity]').on('submit', function () {
+            dyAddToCart(mainProductPrice, mainProductSKU);
+        });
+        jQuery('form[name=add_groupdiscount_form]').on('submit', function () {
+            var bundleProduct = jQuery(this);
+            dyAddToCart(mainProductPrice, mainProductSKU);
+            dyAddToCart(bundleProduct.data('productsPrice'), bundleProduct.data('productsNumber'));
+        });
+        jQuery('form[name=add_all_selected_products]').on('submit', function () {
+            dyAddToCart(mainProductPrice, mainProductSKU);
+            var accessories = jQuery(this).find('input[type=checkbox]:checked');
+            accessories.each(function () {
+                var accessory = jQuery(this);
+                dyAddToCart(accessory.data('price'), accessory.data('articleNumber'));
+            });
+        });
+            });
+</script>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"911da09f94","applicationID":"11944912","transactionName":"YFUDN0NYCBBQVExQXlkfIhZCTQkOHkdKVlVCUxVNQVEW","queueTime":0,"applicationTime":239,"atts":"TBIAQQtCGx4=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

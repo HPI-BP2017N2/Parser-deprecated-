@@ -1,7 +1,0 @@
-{
-  "jsonLD": {
-    "0": [
-      "{\"@context\":\"http://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@id\":\"/\",\"name\":\"Startseite\"}},{\"@type\":\"ListItem\",\"position\":2,\"item\":{\"@id\":\"/de/category/_telefon-navi-235592.html\",\"name\":\"Telefon + Navi\"}},{\"@type\":\"ListItem\",\"position\":3,\"item\":{\"@id\":\"/de/category/_wearables-522552.html\",\"name\":\"Wearables\"}},{\"@type\":\"ListItem\",\"position\":4,\"item\":{\"@id\":\"/de/category/_smartwatches-522555.html\",\"name\":\"Smartwatches\"}},{\"@type\":\"ListItem\",\"position\":5,\"item\":{\"@id\":\"/de/product/_samsung-gear-s3-classic-blue-x-edition-2326652.html#top\",\"name\":\"SAMSUNG Gear S3 classic Blue X Edition, Smartwatch, Echtleder, Small: 110 mm | Large: 130 mm, Silver\"}}]}"
-    ]
-  }
-}
