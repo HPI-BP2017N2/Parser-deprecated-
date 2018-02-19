@@ -21,7 +21,7 @@ public class RabbitConfig {
 
     @Getter(AccessLevel.PRIVATE) @Setter(AccessLevel.PRIVATE) private RabbitReceiver receiver;
     @Getter(AccessLevel.PRIVATE) @Setter(AccessLevel.PRIVATE) private RabbitTemplate template;
-    @Getter(AccessLevel.PRIVATE) private static final String QUEUE_NAME = "parserHtmlPages";
+    @Getter(AccessLevel.PRIVATE) private static final String QUEUE_NAME = "matchingDoneMessages";
 
     @Autowired
     public RabbitConfig(RabbitReceiver receiver, RabbitTemplate template) {

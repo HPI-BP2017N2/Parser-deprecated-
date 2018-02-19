@@ -23,7 +23,6 @@ public class RabbitReceiver {
 
     public void receiveMessage(CrawledPage page) throws JsonProcessingException {
         getLogger().info("Received <" + page.getUrl() + "> from queue");
-
         getController().parsePage(page);
 
 
