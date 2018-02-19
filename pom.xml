@@ -39,6 +39,10 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
@@ -49,11 +53,17 @@
             <artifactId>junit-jupiter-api</artifactId>
             <version>RELEASE</version>
         </dependency>
+
+        <!-- RESTClient -->
+        <dependency>
+            <groupId>de.hpi</groupId>
+            <artifactId>RESTClient</artifactId>
+            <version>1.1</version>
+        </dependency>
     </dependencies>
 
     <properties>
         <java.version>1.8</java.version>
-        <start-class>de.hpi.</start-class>
     </properties>
 
     <build>

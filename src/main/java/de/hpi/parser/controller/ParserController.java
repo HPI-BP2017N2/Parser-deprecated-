@@ -6,9 +6,11 @@ import de.hpi.parser.model.JsonConverter;
 import de.hpi.parser.model.data.Rule;
 import de.hpi.parser.respository.OfferJsonRepository;
 import de.hpi.parser.service.ParserService;
+import de.hpi.restclient.dto.CrawledPage;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.catalina.valves.CrawlerSessionManagerValve;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,10 +33,18 @@ public class ParserController {
         setRepository(repository);
     }
 
-    @RequestMapping(value = "/parse", method = RequestMethod.POST)
-    public void parse(@RequestBody ParseParameter parameter) throws JsonProcessingException {
+    @RequestMapping(value = "/parse", method = RequestMethod.POST, produces = "application/json")
+    public String parse(@RequestBody ParseParameter parameter) throws JsonProcessingException {
         String schemaData = getService().parseHtmlWithSchemaOrg(parameter.getHtml());
         String jsonLDData = getService().parseHtmlWithJsonLD(parameter.getHtml());
+
+        //getRepository().save(schemaData + System.lineSeparator() + jsonLDData);
+        return "[" + schemaData + ",\n" + jsonLDData + "\n]";
+    }
+
+    public void parsePage(CrawledPage page) throws JsonProcessingException {
+        String schemaData = getService().parseHtmlWithSchemaOrg(page.getHtmlSource());
+        String jsonLDData = getService().parseHtmlWithJsonLD(page.getHtmlSource());
 
         getRepository().save(schemaData + System.lineSeparator() + jsonLDData);
     }

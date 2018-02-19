@@ -1,0 +1,9 @@
+server:
+ port: ${PARSER_PORT}
+
+spring:
+ rabbitmq:
+  host: ${RABBIT_IP}
+  port: ${RABBIT_PORT}
+  username: ${RABBIT_USER}
+  password: ${RABBIT_PW}
