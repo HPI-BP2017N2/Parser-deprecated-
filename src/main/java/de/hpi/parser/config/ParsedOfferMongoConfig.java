@@ -1,5 +1,6 @@
-package de.hpi.parser;
+package de.hpi.parser.config;
 
+import de.hpi.parser.config.AbstractMongoConfig;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,4 +1,4 @@
-package de.hpi.parser.config.queue;
+package de.hpi.parser.queue;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import de.hpi.parser.controller.ParserController;

@@ -1,6 +1,6 @@
 package de.hpi.parser.config;
 
-import de.hpi.parser.config.queue.RabbitReceiver;
+import de.hpi.parser.queue.RabbitReceiver;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;

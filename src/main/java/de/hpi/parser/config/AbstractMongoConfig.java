@@ -1,4 +1,4 @@
-package de.hpi.parser;
+package de.hpi.parser.config;
 
 import com.mongodb.MongoClient;
 import com.mongodb.MongoCredential;
