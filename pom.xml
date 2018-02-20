@@ -39,8 +39,17 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
         </dependency>
 
         <!-- JUnit -->
@@ -49,11 +58,17 @@
             <artifactId>junit-jupiter-api</artifactId>
             <version>RELEASE</version>
         </dependency>
+
+        <!-- RESTClient -->
+        <dependency>
+            <groupId>de.hpi</groupId>
+            <artifactId>RESTClient</artifactId>
+            <version>1.1</version>
+        </dependency>
     </dependencies>
 
     <properties>
         <java.version>1.8</java.version>
-        <start-class>de.hpi.</start-class>
     </properties>
 
     <build>
@@ -96,6 +111,13 @@
                 <directory>src/main/resources</directory>
             </resource>
         </resources>
+        <extensions>
+            <extension>
+                <groupId>org.apache.maven.wagon</groupId>
+                <artifactId>wagon-ftp</artifactId>
+                <version>3.0.0</version>
+            </extension>
+        </extensions>
     </build>
 
     <repositories>
@@ -111,6 +133,5 @@
             <url>https://repo.spring.io/libs-release</url>
         </pluginRepository>
     </pluginRepositories>
-
 
 </project>
