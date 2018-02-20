@@ -5,6 +5,7 @@ import de.hpi.parser.dto.ParseParameter;
 import de.hpi.parser.respository.ParsedOfferRepository;
 import de.hpi.parser.service.ParserService;
 import de.hpi.restclient.dto.CrawledPage;
+import de.hpi.restclient.dto.ParsedOffer;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -32,14 +33,8 @@ public class ParserController {
         String jsonLDData = getService().parseHtmlWithJsonLD(page.getHtmlSource());
 
         getRepository().save(page.getShopID(), schemaData + System.lineSeparator() + jsonLDData);
+        getRepository().save(page.getShopID(), new ParsedOffer());
         return "[" + schemaData + ",\n" + jsonLDData + "\n]";
-    }
-
-    public void parsePage(CrawledPage page) throws JsonProcessingException {
-        String schemaData = getService().parseHtmlWithSchemaOrg(page.getHtmlSource());
-        String jsonLDData = getService().parseHtmlWithJsonLD(page.getHtmlSource());
-
-        getRepository().save(page.getShopID(),schemaData + System.lineSeparator() + jsonLDData);
     }
 
 }
