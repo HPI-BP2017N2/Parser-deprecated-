@@ -35,7 +35,9 @@ public class RabbitReceiver {
             e.printStackTrace();
         }
 
-        getLogger().info("Received <" + page.getUrl() + "> from queue");
-        getController().parse(page);
+        if(page != null) {
+            getLogger().info("Received <" + page.getUrl() + "> from queue");
+            getController().parse(page);
+        }
     }
 }
