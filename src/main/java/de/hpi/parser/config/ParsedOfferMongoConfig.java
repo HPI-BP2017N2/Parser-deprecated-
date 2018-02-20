@@ -13,7 +13,7 @@ public class ParsedOfferMongoConfig extends AbstractMongoConfig {
 
     @Primary
     @Override
-    public @Bean//(name = "parsedOfferTemplate")
+    public @Bean
     MongoTemplate getMongoTemplate() throws Exception {
         return new MongoTemplate(mongoDbFactory());
     }
