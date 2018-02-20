@@ -33,7 +33,10 @@ public class ParserController {
         String jsonLDData = getService().parseHtmlWithJsonLD(page.getHtmlSource());
 
         getRepository().save(page.getShopID(), schemaData + System.lineSeparator() + jsonLDData);
-        getRepository().save(page.getShopID(), new ParsedOffer());
+        ParsedOffer offer = new ParsedOffer();
+        offer.setShopId(page.getShopID());
+        offer.setUrl(page.getUrl());
+        getRepository().save(page.getShopID(), offer);
         return "[" + schemaData + ",\n" + jsonLDData + "\n]";
     }
 
