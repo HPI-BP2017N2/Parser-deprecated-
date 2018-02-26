@@ -1,11 +1,7 @@
 package de.hpi.parser.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import de.hpi.parser.dto.ParseParameter;
-import de.hpi.parser.respository.ParsedOfferRepository;
 import de.hpi.parser.service.ParserService;
 import de.hpi.restclient.dto.CrawledPage;
-import de.hpi.restclient.dto.ParsedOffer;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,26 +14,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ParserController {
 
-    @Getter(AccessLevel.PRIVATE) @Setter(AccessLevel.PRIVATE) private ParsedOfferRepository repository;
     @Getter(AccessLevel.PRIVATE) @Setter(AccessLevel.PRIVATE) private ParserService service;
 
     @Autowired
-    public ParserController(ParserService service, ParsedOfferRepository repository){
+    public ParserController(ParserService service){
         setService(service);
-        setRepository(repository);
     }
 
     @RequestMapping(value = "/parse", method = RequestMethod.POST, produces = "application/json")
-    public String parse(@RequestBody CrawledPage page) throws JsonProcessingException {
-        String schemaData = getService().parseHtmlWithSchemaOrg(page.getHtmlSource());
-        String jsonLDData = getService().parseHtmlWithJsonLD(page.getHtmlSource());
-
-        getRepository().save(page.getShopID(), schemaData + System.lineSeparator() + jsonLDData);
-        ParsedOffer offer = new ParsedOffer();
-        offer.setShopId(page.getShopID());
-        offer.setUrl(page.getUrl());
-        getRepository().save(page.getShopID(), offer);
-        return "[" + schemaData + ",\n" + jsonLDData + "\n]";
+    public void parse(@RequestBody CrawledPage page) {
+        getService().parseOffer(page.getHtmlSource(), page.getShopID());
     }
 
 }

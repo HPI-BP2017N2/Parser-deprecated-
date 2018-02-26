@@ -3,7 +3,7 @@ package de.hpi.parser.respository;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
-import de.hpi.restclient.dto.ParsedOffer;
+import de.hpi.restclient.pojo.ExtractedDataMap;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -26,23 +26,18 @@ public class ParsedOfferRepositoryImpl implements ParsedOfferRepository {
 
     // convenience
     @Override
-    public void save(long shopId, String offerJsonString) {
-
-    }
-
-    @Override
-    public void save(long shopId, ParsedOffer offer) {
+    public void save(long shopId, ExtractedDataMap extractedDataMap) {
         if(!collectionExists(shopId)) {
             createCollection(shopId);
         }
         DBCollection collection = getMongoTemplate().getCollection(Long.toString(shopId));
-        collection.save(convertParsedOfferToDbObject(offer));
+        collection.save(convertParsedOfferToDbObject(extractedDataMap));
     }
 
     // conversion
-    private DBObject convertParsedOfferToDbObject(ParsedOffer parsedOffer){
+    private DBObject convertParsedOfferToDbObject(ExtractedDataMap extractedDataMap){
         DBObject dbObject = new BasicDBObject();
-        getMongoTemplate().getConverter().write(parsedOffer, dbObject);
+        getMongoTemplate().getConverter().write(extractedDataMap, dbObject);
         return dbObject;
     }
 

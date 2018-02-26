@@ -2,8 +2,11 @@ package de.hpi.parser.service;
 
 import de.hpi.parser.model.Parser;
 import de.hpi.parser.properties.ParserProperties;
+import de.hpi.parser.respository.ParsedOfferRepository;
 import de.hpi.restclient.clients.BPBridgeClient;
 import de.hpi.restclient.clients.ShopRulesGeneratorClient;
+import de.hpi.restclient.dto.GetRulesResponse;
+import de.hpi.restclient.dto.ParsedOffer;
 import de.hpi.restclient.pojo.ExtractedDataMap;
 import de.hpi.restclient.pojo.Rules;
 import de.hpi.restclient.properties.BPBridgeProperties;
@@ -20,24 +23,24 @@ import java.util.HashMap;
 @Service
 public class ParserService {
 
+    private ParsedOfferRepository repository;
     private ParserProperties properties;
     private ShopRulesGeneratorClient shopRulesGeneratorClient;
 
     @Autowired
-    public ParserService(ParserProperties properties, ShopRulesGeneratorClient shopRulesGeneratorClient) {
+    public ParserService(ParserProperties properties,
+                         ShopRulesGeneratorClient shopRulesGeneratorClient,
+                         ParsedOfferRepository repository) {
         setProperties(properties);
         setShopRulesGeneratorClient(shopRulesGeneratorClient);
+        setRepository(repository);
     }
 
     public void parseOffer(String html, long shopID) {
-        getShopRulesGeneratorClient().getRules(shopID, getProperties().getRoot(), getProperties().getRulesCallbackRoute());
+        GetRulesResponse response = getShopRulesGeneratorClient().getRules(shopID);
+        ExtractedDataMap extractedDataMap = Parser.parse(html, response.getRules());
+
+        getRepository().save(shopID, extractedDataMap);
     }
 
-    public void handleRulesResponse(Rules rules, long shopID) {
-        /*
-        TODO
-        Write store result in Parser DB
-        Use rabbit
-         */
-    }
 }

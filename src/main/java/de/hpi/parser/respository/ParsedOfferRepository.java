@@ -1,10 +1,8 @@
 package de.hpi.parser.respository;
 
-import de.hpi.restclient.dto.ParsedOffer;
+import de.hpi.restclient.pojo.ExtractedDataMap;
 
 public interface ParsedOfferRepository {
 
-    void save(long shopId, String offerJsonString);
-
-    void save(long shopId, ParsedOffer offer);
+    void save(long shopId, ExtractedDataMap offer);
 }
