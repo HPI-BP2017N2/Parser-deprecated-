@@ -1,5 +1,20 @@
 server:
-  port: ${PARSER_PORT}
+ port: ${PARSER_PORT}
+
+spring:
+ rabbitmq:
+  host: ${RABBIT_IP}
+  port: ${RABBIT_PORT}
+  username: ${RABBIT_USER}
+  password: ${RABBIT_PW}
+
+parsedOffers:
+  mongodb:
+    host: ${MONGO_IP}
+    port: ${MONGO_PORT}
+    username: ${MONGO_PARSER_USER}
+    password: ${MONGO_PARSER_PW}
+    database: parsedOffers
 shoprulesgenerator:
   root: ${SHOPRULESGENERATOR_IP}
   getRulesRoute: '/getRules'

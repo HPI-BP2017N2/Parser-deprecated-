@@ -1,31 +1,40 @@
 package de.hpi.parser.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import de.hpi.parser.dto.ParseParameter;
+import de.hpi.parser.respository.ParsedOfferRepository;
 import de.hpi.parser.service.ParserService;
-import de.hpi.restclient.dto.GetRulesResponse;
-import de.hpi.restclient.dto.ParseOfferParameter;
+import de.hpi.restclient.dto.CrawledPage;
+import de.hpi.restclient.dto.ParsedOffer;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ParserController {
 
+    @Getter(AccessLevel.PRIVATE) @Setter(AccessLevel.PRIVATE) private ParsedOfferRepository repository;
     @Getter(AccessLevel.PRIVATE) @Setter(AccessLevel.PRIVATE) private ParserService service;
 
     @Autowired
-    public ParserController(ParserService service){
+    public ParserController(ParserService service, ParsedOfferRepository repository){
         setService(service);
+        setRepository(repository);
     }
 
-    @RequestMapping(value = "/parseOffer", method = RequestMethod.POST)
-    public void parseOffer(@RequestBody ParseOfferParameter parameter){
-        getService().parseOffer(parameter.getHtml(), parameter.getShopID());
+    @RequestMapping(value = "/parse", method = RequestMethod.POST, produces = "application/json")
+    public String parse(@RequestBody CrawledPage page) throws JsonProcessingException {
+        String schemaData = getService().parseHtmlWithSchemaOrg(page.getHtmlSource());
+        String jsonLDData = getService().parseHtmlWithJsonLD(page.getHtmlSource());
+
+        getRepository().save(page.getShopID(), schemaData + System.lineSeparator() + jsonLDData);
+        getRepository().save(page.getShopID(), new ParsedOffer());
+        return "[" + schemaData + ",\n" + jsonLDData + "\n]";
     }
 
-    @RequestMapping(value = "/rulesCallback", method = RequestMethod.POST)
-    public void rulesCallback(@RequestBody GetRulesResponse parameter){
-        getService().handleRulesResponse(parameter.getRules(), parameter.getShopID());
-    }
 }
