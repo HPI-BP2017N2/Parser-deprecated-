@@ -21,7 +21,7 @@ public class ParserController {
         setService(service);
     }
 
-    @RequestMapping(value = "/parse", method = RequestMethod.POST, produces = "application/json")
+    @RequestMapping(value = "/parse", method = RequestMethod.POST)
     public void parse(@RequestBody CrawledPage page) {
         getService().parseOffer(page.getHtmlSource(), page.getShopID());
     }
