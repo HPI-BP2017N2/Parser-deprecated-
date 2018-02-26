@@ -1,7 +1,6 @@
 package de.hpi.parser.service;
 
 import de.hpi.parser.model.Parser;
-import de.hpi.parser.properties.ParserProperties;
 import de.hpi.parser.respository.ParsedOfferRepository;
 import de.hpi.restclient.clients.ShopRulesGeneratorClient;
 import de.hpi.restclient.dto.GetRulesResponse;
@@ -20,14 +19,11 @@ import org.springframework.stereotype.Service;
 public class ParserService {
 
     private ParsedOfferRepository repository;
-    private ParserProperties properties;
     private ShopRulesGeneratorClient shopRulesGeneratorClient;
 
     @Autowired
-    public ParserService(ParserProperties properties,
-                         ShopRulesGeneratorClient shopRulesGeneratorClient,
+    public ParserService(ShopRulesGeneratorClient shopRulesGeneratorClient,
                          ParsedOfferRepository repository) {
-        setProperties(properties);
         setShopRulesGeneratorClient(shopRulesGeneratorClient);
         setRepository(repository);
     }
@@ -36,6 +32,14 @@ public class ParserService {
         GetRulesResponse response = getShopRulesGeneratorClient().getRules(shopID);
         ExtractedDataMap extractedDataMap = Parser.parse(html, response.getRules());
 
+        boolean allEmpty = true;
+        for (ExtractedDataEntry entry : extractedDataMap.getData().values()){
+            if (entry != null) {
+                allEmpty = false;
+                break;
+            }
+        }
+        if (allEmpty) { return; }
         ExtractedDataEntry urlEntry = new ExtractedDataEntry();
         urlEntry.setValue(url);
         extractedDataMap.getData().put(OfferAttribute.URL, urlEntry);
