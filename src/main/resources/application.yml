@@ -15,3 +15,9 @@ parsedOffers:
     username: ${MONGO_PARSER_USER}
     password: ${MONGO_PARSER_PW}
     database: parsedOffers
+shoprulesgenerator:
+  root: ${SHOPRULESGENERATOR_IP}
+  getRulesRoute: '/getRules'
+parser:
+  root: ${PARSER_IP}
+  rulesCallbackRoute: '/rulesCallback'
