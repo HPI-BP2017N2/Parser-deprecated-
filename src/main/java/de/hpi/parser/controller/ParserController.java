@@ -23,7 +23,7 @@ public class ParserController {
 
     @RequestMapping(value = "/parse", method = RequestMethod.POST)
     public void parse(@RequestBody CrawledPage page) {
-        getService().parseOffer(page.getHtmlSource(), page.getShopID());
+        getService().parseOffer(page.getHtmlSource(), page.getShopID(), page.getUrl());
     }
 
 }

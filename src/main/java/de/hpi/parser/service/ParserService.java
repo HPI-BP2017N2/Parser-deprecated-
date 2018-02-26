@@ -7,7 +7,9 @@ import de.hpi.restclient.clients.BPBridgeClient;
 import de.hpi.restclient.clients.ShopRulesGeneratorClient;
 import de.hpi.restclient.dto.GetRulesResponse;
 import de.hpi.restclient.dto.ParsedOffer;
+import de.hpi.restclient.pojo.ExtractedDataEntry;
 import de.hpi.restclient.pojo.ExtractedDataMap;
+import de.hpi.restclient.pojo.OfferAttribute;
 import de.hpi.restclient.pojo.Rules;
 import de.hpi.restclient.properties.BPBridgeProperties;
 import lombok.AccessLevel;
@@ -36,10 +38,13 @@ public class ParserService {
         setRepository(repository);
     }
 
-    public void parseOffer(String html, long shopID) {
+    public void parseOffer(String html, long shopID , String url) {
         GetRulesResponse response = getShopRulesGeneratorClient().getRules(shopID);
         ExtractedDataMap extractedDataMap = Parser.parse(html, response.getRules());
 
+        ExtractedDataEntry urlEntry = new ExtractedDataEntry();
+        urlEntry.setValue(url);
+        extractedDataMap.getData().put(OfferAttribute.URL, urlEntry);
         getRepository().save(shopID, extractedDataMap);
     }
 
