@@ -1,5 +1,6 @@
 package de.hpi.parser.service;
 
+import de.hpi.parser.model.Parser;
 import de.hpi.parser.properties.ParserProperties;
 import de.hpi.restclient.clients.BPBridgeClient;
 import de.hpi.restclient.clients.ShopRulesGeneratorClient;
@@ -19,23 +20,24 @@ import java.util.HashMap;
 @Service
 public class ParserService {
 
-    private HashMap<Long, String> tmpHTMLFiles;
     private ParserProperties properties;
     private ShopRulesGeneratorClient shopRulesGeneratorClient;
 
     @Autowired
     public ParserService(ParserProperties properties, ShopRulesGeneratorClient shopRulesGeneratorClient) {
         setProperties(properties);
-        setTmpHTMLFiles(new HashMap<Long, String>());
         setShopRulesGeneratorClient(shopRulesGeneratorClient);
     }
 
     public void parseOffer(String html, long shopID) {
-        getTmpHTMLFiles().put(shopID, html);
         getShopRulesGeneratorClient().getRules(shopID, getProperties().getRoot(), getProperties().getRulesCallbackRoute());
     }
 
-    public void handleRulesResponse(Rules rules) {
-
+    public void handleRulesResponse(Rules rules, long shopID) {
+        /*
+        TODO
+        Write store result in Parser DB
+        Use rabbit
+         */
     }
 }
